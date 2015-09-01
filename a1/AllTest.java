@@ -1,4 +1,4 @@
-package a1;
+package esof322.a1;
 
 import static org.junit.Assert.*;
 
@@ -29,12 +29,18 @@ public class AllTest {
 	
 	public void testScale(){
 		//Identity
-		double id = 1;
 		Vector3D a = new Vector3D(1.0, 1.0, 1.0);
 		Vector3D idAResult = a.scale(1);
 		Vector3D idAExpected = new Vector3D(1.0, 1.0, 1.0);
 		assertTrue(idAResult.equals(idAExpected));
-		
+		//Zero
+		Vector3D b = new Vector3D(3.21,4.1,5.0);
+		Vector3D zeroBResult = b.scale(0);
+		Vector3D zeroBExpected = new Vector3D(0.0, 0.0, 0.0);
+		assertTrue(b.equals(zeroBResult.equals(zeroBExpected)));
+		//General Case
+		float scalar = 2;
+		Vector3D c = new Vector3D(5.2, 3.3, 4.21);
 	}
 	
 	@Test
