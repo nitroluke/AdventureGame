@@ -1,4 +1,4 @@
-package esof322.a1;
+package a1;
 
 public class Vector3D {
 	/**
@@ -44,5 +44,9 @@ public class Vector3D {
 	 */
 	public boolean equals(Vector3D v) {
 		return dequals(this.x, v.x) && dequals(this.y, v.y) && dequals(this.z, v.z);
+	}
+	
+	public Vector3D scale(float scale){
+		return null;
 	}
 }
