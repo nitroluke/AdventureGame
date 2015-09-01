@@ -55,4 +55,8 @@ public class Vector3D {
 	public Vector3D scale(double scale){
 		return new Vector3D(scale*x, scale*y, scale*z);
 	}
+	
+	public Vector3D negate(){
+		return this.scale(-1);
+	}
 }
