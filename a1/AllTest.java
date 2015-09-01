@@ -47,14 +47,15 @@ public class AllTest {
     }
     
     public void testNegate(){
-    	Vector3D b = new Vector3D(3.21,4.1,5.0);
-    	assertTrue(b.negate().equals(new Vector3D(-3.21,-4.1,-5.0)));
+        Vector3D b = new Vector3D(3.21,4.1,5.0);
+        assertTrue(b.negate().equals(new Vector3D(-3.21,-4.1,-5.0)));
     }
     
     @Test
     public void test() {
         testEquals();
         testScale();
+        testNegate();
     }
 
 }

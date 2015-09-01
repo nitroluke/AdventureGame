@@ -49,7 +49,7 @@ public class Vector3D {
     public boolean equals(Vector3D v) {
         return dequals(this.x, v.x) && dequals(this.y, v.y) && dequals(this.z, v.z);
     }
-	/**
+/**
 	 * Scales a vector by a scalar
 	 * @param scale The scalar to scale the vector
 	 * @return the scaled vector
