@@ -46,7 +46,13 @@ public class Vector3D {
 		return dequals(this.x, v.x) && dequals(this.y, v.y) && dequals(this.z, v.z);
 	}
 	
-	public Vector3D scale(float scale){
+
+	/**
+	 * Scales a vector by a scalar
+	 * @param scale The scalar to scale the vector
+	 * @return the scaled vector
+	 */
+	public Vector3D scale(double scale){
 		return new Vector3D(scale*x, scale*y, scale*z);
 	}
 }
