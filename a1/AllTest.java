@@ -13,8 +13,8 @@ public class AllTest {
 		assertTrue(a.equals(b));
 		//	Obvious false (test each component)
 		Vector3D c = new Vector3D(2.0, 1.0, 1.0);
-		Vector3D d = new Vector3D(2.0, 2.0, 1.0);
-		Vector3D e = new Vector3D(2.0, 1.0, 2.0);
+		Vector3D d = new Vector3D(1.0, 2.0, 1.0);
+		Vector3D e = new Vector3D(1.0, 1.0, 2.0);
 		assertFalse(a.equals(c));
 		assertFalse(a.equals(d));
 		assertFalse(a.equals(e));
