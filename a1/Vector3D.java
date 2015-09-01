@@ -47,6 +47,6 @@ public class Vector3D {
 	}
 	
 	public Vector3D scale(float scale){
-		return null;
+		return new Vector3D(scale*x, scale*y, scale*z);
 	}
 }
