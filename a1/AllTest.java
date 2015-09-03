@@ -51,12 +51,19 @@ public class AllTest {
         Vector3D b = new Vector3D(3.21, 4.1, 5.0);
         assertTrue(b.negate().equals(new Vector3D(-3.21, -4.1, -5.0)));
     }
+    
+    public void testMagnitude(){
+        Vector3D a = new Vector3D(1.1,1.2,1.3);
+        assertTrue(Math.abs(a.magnitude()-2.08327) < 0.001);
+        
+    }
 
     @Test
     public void test() {
-        testEquals();
+    	testEquals();
         testScale();
         testNegate();
+        testMagnitude();
     }
 
 }
