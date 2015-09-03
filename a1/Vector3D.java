@@ -67,10 +67,22 @@ public class Vector3D {
         return new Vector3D(scale * x, scale * y, scale * z);
     }
 
+    /**
+     * Returns the opposite of the Vector
+     * 
+     * @return the opposite of the Vector
+     */
     public Vector3D negate() {
         return this.scale(-1);
     }
+    
+    
+    /**
+     * Returns the magnitude of the vector
+     * 
+     * @return the magnitude of the vector
+     */
     public double magnitude(){
-        return 0;
+        return Math.sqrt(x * x + y * y + z * z);
     }
 }
