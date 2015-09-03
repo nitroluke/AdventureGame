@@ -27,4 +27,4 @@ to fitthe format specified by the instructions by making empty files where they 
 implemented a working equal check in Vector3D.
     Kalvyn Lu wrote the test case for the scale method and then implemented it.
 He then wrote the test case for the negate method and implemented it.
-    Luke Welna fixed the spacing problem and formatted the code properly. 
+    Luke Welna fixed the spacing problem, formatted the code properly and added tests for addition and subtraction. 

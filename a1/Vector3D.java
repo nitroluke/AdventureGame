@@ -70,4 +70,16 @@ public class Vector3D {
     public Vector3D negate() {
         return this.scale(-1);
     }
+
+    public Vector3D add(Vector3D v){
+        // This is not yet implemented
+        Vector3D result = v;
+        return result;
+    }
+
+    public Vector3D subtract(Vector3D v){
+        // This is not yet implemented
+        Vector3D result = v;
+        return result;
+    }
 }

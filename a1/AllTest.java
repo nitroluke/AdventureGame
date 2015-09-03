@@ -57,6 +57,37 @@ public class AllTest {
         testEquals();
         testScale();
         testNegate();
+        testValidAddition();
+        testInvalidAddition();
+        testValidSubtraction();
+        testInvalidSubtraction();
     }
 
+    public void testValidAddition() {
+        Vector3D a = new Vector3D(1.0, 1.0, 1.0);
+        Vector3D b = new Vector3D(2.0, 2.0, 2.0);
+        Vector3D expected = new Vector3D(3.0, 3.0, 3.0);
+        assertTrue((a.add(b)).equals(expected));
+    }
+
+    public void testInvalidAddition() {
+        Vector3D a = new Vector3D(1.0, 1.0, 1.0);
+        Vector3D b = new Vector3D(2.0, 2.0, 2.0);
+        Vector3D expected = new Vector3D(4.0, 2.0, 1.0);
+        assertFalse((a.add(b)).equals(expected));
+    }
+
+    public void testValidSubtraction() {
+        Vector3D a = new Vector3D(1.0, 1.0, 1.0);
+        Vector3D b = new Vector3D(2.0, 2.0, 2.0);
+        Vector3D expected = new Vector3D(-1.0, -1.0, -1.0);
+        assertTrue((a.subtract(b)).equals(expected));
+    }
+
+    public void testInvalidSubtraction() {
+        Vector3D a = new Vector3D(1.0, 1.0, 1.0);
+        Vector3D b = new Vector3D(2.0, 2.0, 2.0);
+        Vector3D expected = new Vector3D(-2.0, -5.0, -6.0);
+        assertFalse((a.subtract(b)).equals(expected));
+    }
 }
