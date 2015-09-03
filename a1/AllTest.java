@@ -28,18 +28,21 @@ public class AllTest {
         assertTrue(a.equals(h));
     }
 
-    public void testScale() {
-        // Identity
+
+    public void testScaleIdentity(){
+        //Identity
         Vector3D a = new Vector3D(1.0, 1.0, 1.0);
         Vector3D idAResult = a.scale(1.0);
         Vector3D idAExpected = new Vector3D(1.0, 1.0, 1.0);
         assertTrue(idAResult.equals(idAExpected));
-        // Zero
-        Vector3D b = new Vector3D(3.21, 4.1, 5.0);
+    }
+    public void testScaleZero(){
+        Vector3D b = new Vector3D(3.21,4.1,5.0);
         Vector3D zeroBResult = b.scale(0.0);
         Vector3D zeroBExpected = new Vector3D(0.0, 0.0, 0.0);
         assertTrue(zeroBResult.equals(zeroBExpected));
-        // General Case
+    }
+    public void testScaleGeneralCase(){
         double scalar = 2;
         Vector3D c = new Vector3D(5.2, 3.3, 4.21);
         Vector3D gcCResult = c.scale(scalar);
@@ -52,15 +55,23 @@ public class AllTest {
         assertTrue(b.negate().equals(new Vector3D(-3.21, -4.1, -5.0)));
     }
 
+    public void testMagnitude(){
+        Vector3D a = new Vector3D(1.1,1.2,1.3);
+        assertTrue(Math.abs(a.magnitude()-2.08327) < 0.001);
+    }
+
     @Test
     public void test() {
         testEquals();
-        testScale();
+        testScaleIdentity();
+        testScaleZero();
+        testScaleGeneralCase();
         testNegate();
         testValidAddition();
         testInvalidAddition();
         testValidSubtraction();
         testInvalidSubtraction();
+        testMagnitude();
     }
 
     public void testValidAddition() {
