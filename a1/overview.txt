@@ -13,18 +13,21 @@ configurations were set properly and identical to each other. This was not a
 problem of the members but a bug of the program. In the future, use of Eclipse
 is discouraged. NetBeans is the proposed alternative, which works properly on
 every member's computers.
-    This was the only hurdle. Dividing the work up was the next process. It was
-decided that the work for scale and negate should be paired because negate
-depends on scale's functionality. It was also decided that add and subtract
-should be grouped together due to being essentially the same methods spare the
-change to the operator. Dot and magnitude were divided up separately, and
-overview as well as equality were handled on it own.
+    This was the only hurdle. Dividing the work up was the next process.
+Setting up the project was paired with writing the equality method due to being
+pivotal to testing the rest of the project. It was decided that the work for
+scale and negate should be paired because negate depends on scale's
+functionality. It was also decided that add and subtract should be grouped
+together due to being essentially the same methods spare the change to the
+operator. Dot and magnitude were divided up separately.
 
 
 Contributions of each member:
     Todd Beckman initialized the assignment package and prepared the project 
-to fitthe format specified by the instructions by making empty files where they were needed. Then, he implemented the first test case (testEqual) and then
+to fit the format specified by the instructions by making empty files where 
+they were needed. Then, he implemented the first test case (testEqual) and then
 implemented a working equal check in Vector3D.
     Kalvyn Lu wrote the test case for the scale method and then implemented it.
 He then wrote the test case for the negate method and implemented it.
-    Luke Welna fixed the spacing problem and formatted the code properly. 
+    Luke Welna fixed the spacing problem and formatted the code properly.
+    Dylan Hills wrote the test method and the implementation of the magnitude method.
