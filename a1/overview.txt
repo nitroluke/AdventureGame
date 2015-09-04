@@ -1,12 +1,12 @@
 Todd Beckman
-Dillon Hills
+Dylan Hills
 Kalvyn Lu
 Luke ONeill
 Luke Welna
 
 Overview
     The team at first struggled to keep files in sync because the various IDE's
-sometimes used tabs instead of spaces, making for incredibly tidious merge
+sometimes used tabs instead of spaces, making for incredibly tedious merge
 conflicts. Part of the persistence issues was a bug in which one group
 member's Eclipse IDE always inserted tabs for spaces even when the
 configurations were set properly and identical to each other. This was not a
@@ -36,3 +36,4 @@ He then wrote the test case for the negate method and implemented it.
 and added tests for addition and subtraction.
 
     Dylan Hills wrote the test method and the implementation of the magnitude method.
+    30 Minutes
