@@ -27,7 +27,8 @@ Contributions of each member:
     Todd Beckman initialized the assignment package and prepared the project
 to fit the format specified by the instructions by making empty files where
 they were needed. Then, he implemented the first test case (testEqual) and then
-implemented a working equal check in Vector3D.
+implemented a working equal check in Vector3D. He spent 5 minutes coding but
+almost 2 hours configuring the folders to match the sub-standard specifications.
 
     Kalvyn Lu wrote the test case for the scale method and then implemented it.
 He then wrote the test case for the negate method and implemented it.
