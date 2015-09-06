@@ -5,7 +5,9 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class AllTest {
+import esof322.a1.Vector3D;
+
+public class Vector3DTest {
 
     public void testEquals() {
         // Obvious true
@@ -60,19 +62,6 @@ public class AllTest {
         assertTrue(Math.abs(a.magnitude()-2.08327) < 0.001);
     }
 
-    @Test
-    public void test() {
-        testEquals();
-        testScaleIdentity();
-        testScaleZero();
-        testScaleGeneralCase();
-        testNegate();
-        testValidAddition();
-        testInvalidAddition();
-        testValidSubtraction();
-        testInvalidSubtraction();
-        testMagnitude();
-    }
 
     public void testValidAddition() {
         Vector3D a = new Vector3D(1.0, 1.0, 1.0);
@@ -100,5 +89,20 @@ public class AllTest {
         Vector3D b = new Vector3D(2.0, 2.0, 2.0);
         Vector3D expected = new Vector3D(-2.0, -5.0, -6.0);
         assertFalse((a.subtract(b)).equals(expected));
+    }
+    
+
+    @Test
+    public void test() {
+        testEquals();
+        testScaleIdentity();
+        testScaleZero();
+        testScaleGeneralCase();
+        testNegate();
+        testValidAddition();
+        testInvalidAddition();
+        testValidSubtraction();
+        testInvalidSubtraction();
+        testMagnitude();
     }
 }

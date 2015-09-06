@@ -85,4 +85,16 @@ public class Vector3D {
     public double magnitude(){
         return Math.sqrt(x * x + y * y + z * z);
     }
+    
+    public Vector3D add(Vector3D v){
+        // This is not yet implemented
+        Vector3D result = v;
+        return result;
+    }
+
+    public Vector3D subtract(Vector3D v){
+        // This is not yet implemented
+        Vector3D result = v;
+        return result;
+    }
 }
