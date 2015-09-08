@@ -2,6 +2,6 @@
 bin/
 .project
 .classpath
-.DS_STORE
 hamcrest-core-1.3.jar
 junit-4.12.jar
+.DS_Store
