@@ -87,14 +87,17 @@ public class Vector3D {
     }
     
     public Vector3D add(Vector3D v){
-        // This is not yet implemented
         Vector3D result = v;
-        return result;
+        return new result(x + result.x, y + result.y, z + result.z);
     }
 
     public Vector3D subtract(Vector3D v){
-        // This is not yet implemented
         Vector3D result = v;
-        return result;
+        return new result(x - result.x, y - result.y, z - result.z);
+    }
+    
+    public double dot(final Vector<Euclidean3D> v) {
+        Vector3D result = v;
+        return MathArrays.linearCombination(x, result.x, y, result.y, z, result.z);
     }
 }
