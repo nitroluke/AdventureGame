@@ -90,6 +90,12 @@ public class Vector3DTest {
         Vector3D expected = new Vector3D(-2.0, -5.0, -6.0);
         assertFalse((a.subtract(b)).equals(expected));
     }
+    public void testValidDotProduct(){
+	Vector3D a = new Vector3D(0, 3.0, -7.0);
+	Vector3D b = new Vector3D(2.0, 3.0, 1.0);
+	Vector3D expected = new Vector3D(2.0);
+	assertFalse((a.dot(b)).equals(expected));
+    }
     
 
     @Test
