@@ -30,21 +30,22 @@ public class Vector3DTest {
         assertTrue(a.equals(h));
     }
 
-
-    public void testScaleIdentity(){
-        //Identity
+    public void testScaleIdentity() {
+        // Identity
         Vector3D a = new Vector3D(1.0, 1.0, 1.0);
         Vector3D idAResult = a.scale(1.0);
         Vector3D idAExpected = new Vector3D(1.0, 1.0, 1.0);
         assertTrue(idAResult.equals(idAExpected));
     }
-    public void testScaleZero(){
-        Vector3D b = new Vector3D(3.21,4.1,5.0);
+
+    public void testScaleZero() {
+        Vector3D b = new Vector3D(3.21, 4.1, 5.0);
         Vector3D zeroBResult = b.scale(0.0);
         Vector3D zeroBExpected = new Vector3D(0.0, 0.0, 0.0);
         assertTrue(zeroBResult.equals(zeroBExpected));
     }
-    public void testScaleGeneralCase(){
+
+    public void testScaleGeneralCase() {
         double scalar = 2;
         Vector3D c = new Vector3D(5.2, 3.3, 4.21);
         Vector3D gcCResult = c.scale(scalar);
@@ -57,11 +58,10 @@ public class Vector3DTest {
         assertTrue(b.negate().equals(new Vector3D(-3.21, -4.1, -5.0)));
     }
 
-    public void testMagnitude(){
-        Vector3D a = new Vector3D(1.1,1.2,1.3);
-        assertTrue(Math.abs(a.magnitude()-2.08327) < 0.001);
+    public void testMagnitude() {
+        Vector3D a = new Vector3D(1.1, 1.2, 1.3);
+        assertTrue(Math.abs(a.magnitude() - 2.08327) < 0.001);
     }
-
 
     public void testValidAddition() {
         Vector3D a = new Vector3D(1.0, 1.0, 1.0);
@@ -90,13 +90,13 @@ public class Vector3DTest {
         Vector3D expected = new Vector3D(-2.0, -5.0, -6.0);
         assertFalse((a.subtract(b)).equals(expected));
     }
-    public void testValidDotProduct(){
-	Vector3D a = new Vector3D(0, 3.0, -7.0);
-	Vector3D b = new Vector3D(2.0, 3.0, 1.0);
-	Vector3D expected = new Vector3D(2.0);
-	assertFalse((a.dot(b)).equals(expected));
+
+    public void testValidDotProduct() {
+        Vector3D a = new Vector3D(0, 3.0, -7.0);
+        Vector3D b = new Vector3D(2.0, 3.0, 1.0);
+        Vector3D expected = new Vector3D(2.0);
+        assertFalse((a.dot(b)).equals(expected));
     }
-    
 
     @Test
     public void test() {
