@@ -9,25 +9,28 @@ import esof322.a1.Vector3D;
 
 public class Vector3DTest {
 
-    public void testEquals() {
-        // Obvious true
+    public void testTrueEquals() {
         Vector3D a = new Vector3D(1.0, 1.0, 1.0);
         Vector3D b = new Vector3D(1.0, 1.0, 1.0);
         assertTrue(a.equals(b));
-        // Obvious false (test each component)
+    }
+    public void testFalseEquals() {
+    	Vector3D a = new Vector3D(1.0, 1.0, 1.0);
         Vector3D c = new Vector3D(2.0, 1.0, 1.0);
         Vector3D d = new Vector3D(1.0, 2.0, 1.0);
         Vector3D e = new Vector3D(1.0, 1.0, 2.0);
         assertFalse(a.equals(c));
         assertFalse(a.equals(d));
         assertFalse(a.equals(e));
-        // False, because the tolerance states difference must be no greater than .001
-        Vector3D f = new Vector3D(1.001, 1.0, 1.0);
-        Vector3D g = new Vector3D(0.999, 1.0, 1.0);
-        assertFalse(f.equals(g));
+    }
+    public void testEqualTolerance() {
+    	Vector3D a = new Vector3D(1.0005, 1.0, 1.0);
+        Vector3D b = new Vector3D(1.001, 1.0, 1.0);
+        Vector3D c = new Vector3D(0.999, 1.0, 1.0);
         // True, because the difference is less than 0.001
-        Vector3D h = new Vector3D(1.0005, 1.0, 1.0);
-        assertTrue(a.equals(h));
+        assertTrue(a.equals(b));
+        // False, because the tolerance states difference must be no greater than .001
+        assertFalse(b.equals(c));
     }
 
     public void testScaleIdentity() {
@@ -100,7 +103,9 @@ public class Vector3DTest {
 
     @Test
     public void test() {
-        testEquals();
+        testTrueEquals();
+        testFalseEquals();
+        testEqualTolerance();
         testScaleIdentity();
         testScaleZero();
         testScaleGeneralCase();
