@@ -111,7 +111,7 @@ public class Vector3D {
      * @param v The vector to multiply by.
      * @return the result of the subtraction.
      */
-    public Vector3D dot(Vector3D v) {
-        return new Vector3D(this.x*v.x + this.y*v.y + this.z*v.z);
+    public double dot(Vector3D v) {
+        return double(this.x*v.x + this.y*v.y + this.z*v.z);
     }
 }

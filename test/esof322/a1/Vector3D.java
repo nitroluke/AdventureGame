@@ -95,6 +95,6 @@ public class Vector3D {
     }
 
     public double dot(Vector3D v) {
-        return new double(this.x*v.x + this.y*v.y + this.z*v.z);
+        return double(this.x*v.x + this.y*v.y + this.z*v.z);
     }
 }
