@@ -98,6 +98,13 @@ public class Vector3DTest {
         Vector3D a = new Vector3D(0, 3.0, -7.0);
         Vector3D b = new Vector3D(2.0, 3.0, 1.0);
         double expected = 2.0;
+        assertTrue((a.dot(b)).equals(expected));
+    }
+    
+    public void testInvalidDotProduct() {
+        Vector3D a = new Vector3D(0, 3.0, -7.0);
+        Vector3D b = new Vector3D(2.0, 3.0, 1.0);
+        double expected = 4.0;
         assertFalse((a.dot(b)).equals(expected));
     }
 
@@ -114,6 +121,8 @@ public class Vector3DTest {
         testInvalidAddition();
         testValidSubtraction();
         testInvalidSubtraction();
+        testValidDotProduct();
+        testInvalidDotProduct();
         testMagnitude();
     }
 }
