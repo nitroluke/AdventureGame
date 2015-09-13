@@ -97,7 +97,7 @@ public class Vector3DTest {
     public void testValidDotProduct() {
         Vector3D a = new Vector3D(0, 3.0, -7.0);
         Vector3D b = new Vector3D(2.0, 3.0, 1.0);
-        Vector3D expected = new Vector3D(2.0);
+        double expected = 2.0;
         assertFalse((a.dot(b)).equals(expected));
     }
 
