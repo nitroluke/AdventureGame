@@ -76,13 +76,12 @@ public class Vector3D {
         return this.scale(-1);
     }
 
-
     /**
      * Returns the magnitude of the vector
      *
      * @return the magnitude of the vector
      */
-    public double magnitude(){
+    public double magnitude() {
         return Math.sqrt(x * x + y * y + z * z);
     }
 
@@ -95,6 +94,6 @@ public class Vector3D {
     }
 
     public double dot(Vector3D v) {
-        return double(this.x*v.x + this.y*v.y + this.z*v.z);
+        return this.x * v.x + this.y * v.y + this.z * v.z;
     }
 }

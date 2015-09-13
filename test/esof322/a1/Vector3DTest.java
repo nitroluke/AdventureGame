@@ -14,8 +14,9 @@ public class Vector3DTest {
         Vector3D b = new Vector3D(1.0, 1.0, 1.0);
         assertTrue(a.equals(b));
     }
+
     public void testFalseEquals() {
-    	Vector3D a = new Vector3D(1.0, 1.0, 1.0);
+        Vector3D a = new Vector3D(1.0, 1.0, 1.0);
         Vector3D c = new Vector3D(2.0, 1.0, 1.0);
         Vector3D d = new Vector3D(1.0, 2.0, 1.0);
         Vector3D e = new Vector3D(1.0, 1.0, 2.0);
@@ -23,8 +24,9 @@ public class Vector3DTest {
         assertFalse(a.equals(d));
         assertFalse(a.equals(e));
     }
+
     public void testEqualTolerance() {
-    	Vector3D a = new Vector3D(1.0005, 1.0, 1.0);
+        Vector3D a = new Vector3D(1.0005, 1.0, 1.0);
         Vector3D b = new Vector3D(1.001, 1.0, 1.0);
         Vector3D c = new Vector3D(0.999, 1.0, 1.0);
         // True, because the difference is less than 0.001
@@ -98,9 +100,9 @@ public class Vector3DTest {
         Vector3D a = new Vector3D(0, 3.0, -7.0);
         Vector3D b = new Vector3D(2.0, 3.0, 1.0);
         double expected = 2.0;
-        assertTrue((a.dot(b))== expected);
+        assertTrue((a.dot(b)) == expected);
     }
-    
+
     public void testInvalidDotProduct() {
         Vector3D a = new Vector3D(0, 3.0, -7.0);
         Vector3D b = new Vector3D(2.0, 3.0, 1.0);
