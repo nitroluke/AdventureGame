@@ -104,4 +104,14 @@ public class Vector3D {
     public Vector3D subtract(Vector3D v) {
         return new Vector3D(this.x - v.x, this.y - v.y, this.z - v.z);
     }
+      
+    /**
+     * Dot Products two vectors
+     *
+     * @param v The vector to multiply by.
+     * @return the result of the subtraction.
+     */
+    public Vector3D dot(Vector3D v) {
+        return new Vector3D(this.x*v.x + this.y*v.y + this.z*v.z);
+    }
 }
