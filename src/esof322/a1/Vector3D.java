@@ -85,10 +85,22 @@ public class Vector3D {
         return Math.sqrt(x * x + y * y + z * z);
     }
 
+    /**
+     * Adds two vectors
+     *
+     * @param v The vector to add to.
+     * @return the result of the addition
+     */
     public Vector3D add(Vector3D v) {
         return new Vector3D(this.x + v.x, this.y + v.y, this.z + v.z);
     }
 
+    /**
+     * Subtracts two vectors
+     *
+     * @param v The vector to subtract by.
+     * @return the result of the subtraction.
+     */
     public Vector3D subtract(Vector3D v) {
         return new Vector3D(this.x - v.x, this.y - v.y, this.z - v.z);
     }

@@ -33,7 +33,7 @@ almost 2 hours configuring the folders to match the sub-standard specifications.
     Kalvyn Lu wrote the test case for the scale method and then implemented it.
 He then wrote the test case for the negate method and implemented it.
 
-    Luke Welna fixed the spacing problem, formatted the code properly, added tests
+    Luke Welna fixed the spacing problems, formatted the code properly, added tests
 for addition and subtraction and then implemented them.
 
     Dylan Hills wrote the test method and the implementation of the magnitude method.
