@@ -38,3 +38,5 @@ for addition and subtraction and then implemented them.
 
     Dylan Hills wrote the test method and the implementation of the magnitude method.
     30 Minutes
+
+    Luke O’Neill wrote the dot product method and methods to test the dot product.
