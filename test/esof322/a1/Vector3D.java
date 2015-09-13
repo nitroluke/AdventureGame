@@ -94,8 +94,7 @@ public class Vector3D {
         return new Vector3D(this.x - v.x, this.y - v.y, this.z - v.z);
     }
 
-    public double dot(final Vector<Euclidean3D> v) {
-        Vector3D result = v;
-        return MathArrays.linearCombination(x, result.x, y, result.y, z, result.z);
+    public double dot(Vector3D v) {
+        return new Vector3D(this.x*v.x + this.y*v.y + this.z*v.z);
     }
 }
