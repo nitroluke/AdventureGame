@@ -8,13 +8,14 @@ import org.junit.Test;
 import esof322.a1.Vector3D;
 
 public class Vector3DTest {
-
+    @Test
     public void testTrueEquals() {
         Vector3D a = new Vector3D(1.0, 1.0, 1.0);
         Vector3D b = new Vector3D(1.0, 1.0, 1.0);
         assertTrue(a.equals(b));
     }
 
+    @Test
     public void testFalseEquals() {
         Vector3D a = new Vector3D(1.0, 1.0, 1.0);
         Vector3D c = new Vector3D(2.0, 1.0, 1.0);
@@ -25,6 +26,7 @@ public class Vector3DTest {
         assertFalse(a.equals(e));
     }
 
+    @Test
     public void testEqualTolerance() {
         Vector3D a = new Vector3D(1.0005, 1.0, 1.0);
         Vector3D b = new Vector3D(1.001, 1.0, 1.0);
@@ -35,6 +37,7 @@ public class Vector3DTest {
         assertFalse(b.equals(c));
     }
 
+    @Test
     public void testScaleIdentity() {
         // Identity
         Vector3D a = new Vector3D(1.0, 1.0, 1.0);
@@ -43,6 +46,7 @@ public class Vector3DTest {
         assertTrue(idAResult.equals(idAExpected));
     }
 
+    @Test
     public void testScaleZero() {
         Vector3D b = new Vector3D(3.21, 4.1, 5.0);
         Vector3D zeroBResult = b.scale(0.0);
@@ -50,6 +54,7 @@ public class Vector3DTest {
         assertTrue(zeroBResult.equals(zeroBExpected));
     }
 
+    @Test
     public void testScaleGeneralCase() {
         double scalar = 2;
         Vector3D c = new Vector3D(5.2, 3.3, 4.21);
@@ -58,16 +63,19 @@ public class Vector3DTest {
         assertTrue(gcCResult.equals(gcCExpected));
     }
 
+    @Test
     public void testNegate() {
         Vector3D b = new Vector3D(3.21, 4.1, 5.0);
         assertTrue(b.negate().equals(new Vector3D(-3.21, -4.1, -5.0)));
     }
 
+    @Test
     public void testMagnitude() {
         Vector3D a = new Vector3D(1.1, 1.2, 1.3);
         assertTrue(Math.abs(a.magnitude() - 2.08327) < 0.001);
     }
 
+    @Test
     public void testValidAddition() {
         Vector3D a = new Vector3D(1.0, 1.0, 1.0);
         Vector3D b = new Vector3D(2.0, 2.0, 2.0);
@@ -75,6 +83,7 @@ public class Vector3DTest {
         assertTrue((a.add(b)).equals(expected));
     }
 
+    @Test
     public void testInvalidAddition() {
         Vector3D a = new Vector3D(1.0, 1.0, 1.0);
         Vector3D b = new Vector3D(2.0, 2.0, 2.0);
@@ -82,6 +91,7 @@ public class Vector3DTest {
         assertFalse((a.add(b)).equals(expected));
     }
 
+    @Test
     public void testValidSubtraction() {
         Vector3D a = new Vector3D(1.0, 1.0, 1.0);
         Vector3D b = new Vector3D(2.0, 2.0, 2.0);
@@ -89,6 +99,7 @@ public class Vector3DTest {
         assertTrue((a.subtract(b)).equals(expected));
     }
 
+    @Test
     public void testInvalidSubtraction() {
         Vector3D a = new Vector3D(1.0, 1.0, 1.0);
         Vector3D b = new Vector3D(2.0, 2.0, 2.0);
@@ -96,6 +107,7 @@ public class Vector3DTest {
         assertFalse((a.subtract(b)).equals(expected));
     }
 
+    @Test
     public void testValidDotProduct() {
         Vector3D a = new Vector3D(0, 3.0, -7.0);
         Vector3D b = new Vector3D(2.0, 3.0, 1.0);
@@ -103,28 +115,11 @@ public class Vector3DTest {
         assertTrue((a.dot(b)) == expected);
     }
 
+    @Test
     public void testInvalidDotProduct() {
         Vector3D a = new Vector3D(0, 3.0, -7.0);
         Vector3D b = new Vector3D(2.0, 3.0, 1.0);
         double expected = 4.0;
         assertFalse((a.dot(b)) == expected);
-    }
-
-    @Test
-    public void test() {
-        testTrueEquals();
-        testFalseEquals();
-        testEqualTolerance();
-        testScaleIdentity();
-        testScaleZero();
-        testScaleGeneralCase();
-        testNegate();
-        testValidAddition();
-        testInvalidAddition();
-        testValidSubtraction();
-        testInvalidSubtraction();
-        testValidDotProduct();
-        testInvalidDotProduct();
-        testMagnitude();
     }
 }
