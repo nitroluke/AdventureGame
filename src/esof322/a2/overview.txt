@@ -1,0 +1,29 @@
+Todd Beckman
+Dylan Hills
+Kalvyn Lu
+Luke O'Neill
+Luke Welna
+
+TODO:
+    Directional movement communication interface (Todd - Done)
+    Picking up and dropping items communication interface
+    Updating the description and item text boxes
+    Add an additional text area for info besides room descriptions
+    UML Diagram
+
+Overall Description of Changes
+    
+
+Interesting Class Relationships, Design Approaches, and Troublesome Things
+
+
+Special Running Instructions
+
+    This game supports text-based and graphical user interface. To run the
+graphical user interface, run AdventureGameView. To run in the console, run
+AdventureGame.
+
+
+Time Spent by each member
+
+Todd Beckman- 2 hours
