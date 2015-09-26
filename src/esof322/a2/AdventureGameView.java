@@ -115,6 +115,7 @@ public class AdventureGameView extends GBFrame {
     private void drop() {
         // Set up a dialog to talk to the model and
         // determine what items to pick up.
+        model.drop();
     }
     
     public void startQuest() {

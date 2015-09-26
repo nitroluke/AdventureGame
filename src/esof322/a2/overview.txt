@@ -11,7 +11,7 @@ Assignment 2
 TODO:
 -----
 - Directional movement communication interface (Todd - Done)
-- Picking up and dropping items communication interface
+- Picking up and dropping items communication interface(Kalvyn - Done)
 - Updating the description and item text boxes
 - Add an additional text area for info besides room descriptions
 - UML Diagram

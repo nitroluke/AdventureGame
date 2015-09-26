@@ -51,7 +51,9 @@ public class AdventureGameModelFacade {
     public void grab(){
         listener.send("g");
     }
-    
+    public void drop(){
+        listener.send("t");
+    }
     public void takeInput(String input){
         listener.send(input);
     }
