@@ -36,6 +36,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/*
+ * Todd Beckman: convertDirection uses char. This is because it is only ever called from char and is
+ * guaranteed to have a length of one. It now returns the value directly instead of storing it first
+ * and breaking cases. Bad direction input is now -1 which is much more intuitive than 9999. The
+ * input character is forced to be lowercase to eliminate half of the test cases
+ */
 public class AdventureGame {
 
     /**
@@ -43,36 +49,22 @@ public class AdventureGame {
      * Internally, we use integers 0-9 as directions throughout the program. This is a bit of a cludge, but is simpler for now than
      * creating a Direction class. I use this cludge because Java in 1999 did not have an enumerated data type.
      */
-    private int convertDirection(String input) {
-        char d = input.charAt(0);
-        int theDirection = 9999;
-        switch (d) {
+    private int convertDirection(char input) {
+        switch (input) {
         case 'n':
-        case 'N':
-            theDirection = 0;
-            break;
+            return 0;
         case 's':
-        case 'S':
-            theDirection = 1;
-            break;
+            return 1;
         case 'e':
-        case 'E':
-            theDirection = 2;
-            break;
+            return 2;
         case 'w':
-        case 'W':
-            theDirection = 3;
-            break;
+            return 3;
         case 'u':
-        case 'U':
-            theDirection = 4;
-            break;
+            return 4;
         case 'd':
-        case 'D':
-            theDirection = 5;
-            break;
+            return 5;
         }
-        return theDirection;
+        return -1;
     }
 
     /**
@@ -150,36 +142,23 @@ public class AdventureGame {
             System.out.println("You are carrying: " +
                                thePlayer.showMyThings() + '\n');
             /* get next move */
-            int direction = 9;
+            int direction = -1;
 
             System.out.println("Which way (n,s,e,w,u,d)," +
                                " or grab (g) or toss (t) an item," +
                                " or quit (q)?" + '\n');
-            inputString = keyboard.readLine();
+            inputString = keyboard.readLine().toLowerCase();
             System.out.println('\n');
-            if (inputString.equals(""))
+            if (inputString.equals("")) {
                 inputString = " ";
+            }
             char key = inputString.charAt(0);
-            switch (key) {
-            // Go
-            case 'n':
-            case 'N':
-            case 's':
-            case 'S':
-            case 'e':
-            case 'E':
-            case 'w':
-            case 'W':
-            case 'u':
-            case 'U':
-            case 'd':
-            case 'D':
-                direction = convertDirection(inputString);
+            direction = convertDirection(key);
+            if (direction != -1) {
                 thePlayer.go(direction);
-                break;
-            // Grab Item
-            case 'g':
-            case 'G':
+            }
+            //	Grab item
+            else if (key == 'g') {
                 if (thePlayer.handsFull())
                     System.out.println("Your hands are full.");
                 else if ((thePlayer.getLoc()).roomEmpty())
@@ -190,15 +169,13 @@ public class AdventureGame {
                     thePlayer.pickUp(itemToGrab);
                     (thePlayer.getLoc()).removeItem(itemToGrab);
                 }
-                break;
-            // Drop Item
-            case 't':
-            case 'T':
+            }
+            //  Toss Item
+            else if (key == 't') {
                 if (thePlayer.handsEmpty())
                     System.out.println("You have nothing to drop.");
                 else {
-                    int itemToToss =
-                        chooseDropItem(thePlayer, keyboard);
+                    int itemToToss = chooseDropItem(thePlayer, keyboard);
                     thePlayer.drop(itemToToss);
                 }
             }
