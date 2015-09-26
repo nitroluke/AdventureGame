@@ -46,6 +46,9 @@ public class AdventureGameView extends GBFrame {
     JButton westButton = addButton("West", 13, 1, 1, 1);
     JButton upButton = addButton("Up", 12, 3, 1, 1);
     JButton downButton = addButton("Down", 14, 3, 1, 1);
+    
+    JTextArea textInput = addTextArea("Input",15,3,1,1);
+    JButton textInputButton = addButton("Submit",15,4,1,1);
 
     AdventureGameModelFacade model;
 
@@ -83,9 +86,12 @@ public class AdventureGameView extends GBFrame {
 
         else if (buttonObj == grabButton)
             grab();
-
         else if (buttonObj == dropButton)
             drop();
+        else if (buttonObj == textInputButton){
+            model.takeInput(textInput.getText());
+            textInput.replaceRange("", 0, textInput.getText().length());
+        }
 
         displayCurrentInfo();
     }
@@ -101,6 +107,7 @@ public class AdventureGameView extends GBFrame {
     private void grab() {
         // Set up a dialog to talk to the model and
         // determine what items to pick up.
+        model.grab();
     }
 
     // Left as an exercise.

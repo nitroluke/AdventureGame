@@ -48,6 +48,15 @@ public class AdventureGameModelFacade {
         listener.send("w");
     }
 
+    public void grab(){
+        listener.send("g");
+    }
+    
+    public void takeInput(String input){
+        listener.send(input);
+    }
+    
+    
     // You need to finish these getView and getItems methods.
     public String getView() {
         return ("My view");
