@@ -20,8 +20,7 @@ public class InputListener {
      * @param listener The object that is to be synchronized in waiting
      * @return The message that is finally received.
      */
-    public String receive(Object listenObject) {
-        this.listenObject = listenObject;
+    public String receive() {
         synchronized(listenObject) {
             try {
                 message = null;
@@ -29,9 +28,7 @@ public class InputListener {
                     listenObject.wait();
                 }
             }
-            catch (InterruptedException e) {
-                return message;
-            }
+            catch (InterruptedException e) {}
         }
         return message;
     }

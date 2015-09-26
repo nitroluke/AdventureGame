@@ -15,6 +15,7 @@ TODO:
 - Updating the description and item text boxes
 - Add an additional text area for info besides room descriptions
 - UML Diagram
+- Paste git logs into this file
 
 
 Overall Description of Changes

@@ -78,7 +78,7 @@ public class AdventureGame {
         }
         else {
             try {
-                return listener.receive(this).toLowerCase().charAt(0);
+                return listener.receive().toLowerCase().charAt(0);
             }
             //  Empty String
             catch (StringIndexOutOfBoundsException e) {
@@ -102,7 +102,7 @@ public class AdventureGame {
             }
         }
         else {
-            input = listener.receive(this);
+            input = listener.receive();
         }
         try {
             return Integer.parseInt(input);
