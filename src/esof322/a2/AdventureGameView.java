@@ -108,6 +108,7 @@ public class AdventureGameView extends GBFrame {
         // Set up a dialog to talk to the model and
         // determine what items to pick up.
         model.grab();
+        //carryingArea.setText(model.getItems());
     }
 
     // Left as an exercise.

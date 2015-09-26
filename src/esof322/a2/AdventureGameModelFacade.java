@@ -63,7 +63,7 @@ public class AdventureGameModelFacade {
     }
 
     public String getItems() {
-        return ("My items");
+        return game.getPlayer().showMyThings();
     }
 
     // Surely you will need other methods to deal with

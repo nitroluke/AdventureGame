@@ -62,6 +62,13 @@ public class AdventureGame {
      * Force the program to wait for user input. Gets the first character of input.
      * @return The user's input or ' ' on failure
      */
+    
+    Player thePlayer = new Player();
+    
+    public Player getPlayer(){
+        return thePlayer;
+    }
+    
     private char receiveChar() {
         if (usingKeyboard) {
             try {
@@ -175,9 +182,9 @@ public class AdventureGame {
 
         return theChoice;
     }
-
+    
     public void startQuest() {
-        Player thePlayer = new Player();
+        thePlayer = new Player();
         Adventure theCave = new Adventure();
         Room startRm = theCave.createAdventure();
         thePlayer.setRoom(startRm);
