@@ -9,23 +9,44 @@ public class AdventureGameModelFacade {
     // its description, what I'm carrying, etc.
     //
     // These methods and fields are left as exercises.
+    /** The game from which data will be requested **/
     private AdventureGame game;
     
+    /** The input mechanism to interface with the game **/
+    private InputListener listener;
+    
     AdventureGameModelFacade() { // we initialize
-        this.game = new AdventureGame();
+        this.listener = new InputListener();
+        this.game = new AdventureGame(this, listener);
+    }
+    
+    public void startQuest() {
+        game.startQuest();
     }
 
-    public void goUp() {}
+    public void goUp() {
+        listener.send("u");
+    }
 
-    public void goDown() {}
+    public void goDown() {
+        listener.send("d");
+    }
 
-    public void goNorth() {}
+    public void goNorth() {
+        listener.send("n");
+    }
 
-    public void goSouth() {}
+    public void goSouth() {
+        listener.send("s");
+    }
 
-    public void goEast() {}
+    public void goEast() {
+        listener.send("e");
+    }
 
-    public void goWest() {}
+    public void goWest() {
+        listener.send("w");
+    }
 
     // You need to finish these getView and getItems methods.
     public String getView() {

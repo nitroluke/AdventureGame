@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 /*
- * Todd Beckman: 
+ * Todd Beckman: Added startQuest method to invoke the model's startQuest
  */
 public class AdventureGameView extends GBFrame {
 
@@ -108,10 +108,15 @@ public class AdventureGameView extends GBFrame {
         // Set up a dialog to talk to the model and
         // determine what items to pick up.
     }
+    
+    public void startQuest() {
+        model.startQuest();
+    }
 
     public static void main(String[] args) {
-        JFrame view = new AdventureGameView();
+        AdventureGameView view = new AdventureGameView();
         view.setSize(800, 600); /* was 400, 250 */
         view.setVisible(true);
+        view.startQuest();
     }
 }

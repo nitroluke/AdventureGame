@@ -48,21 +48,42 @@ import java.io.InputStreamReader;
  * receiver was also made to support integer input rather than first character input.
  */
 public class AdventureGame {
+    private AdventureGameModelFacade model;
+    
+    /** Keep track of which type of input to look for */
+    private boolean usingKeyboard;
+    
     /** Create the keyboard to control the game; we only need one */
-    private BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
+    private BufferedReader keyboard;
+    
+    /** Create the input to control the game; we only need one */
+    private InputListener listener;
     /**
      * Force the program to wait for user input. Gets the first character of input.
      * @return The user's input or ' ' on failure
      */
     private char receiveChar() {
-        try {
-            return keyboard.readLine().toLowerCase().charAt(0);
+        if (usingKeyboard) {
+            try {
+                return keyboard.readLine().toLowerCase().charAt(0);
+            }
+            //  Empty String
+            catch (StringIndexOutOfBoundsException e1) {
+                return ' ';
+            }
+            //  Buffered Reader fails
+            catch (IOException e) {
+                return ' ';
+            }
         }
-        //  Empty String
-        catch (ArrayIndexOutOfBoundsException e1) {
-            return ' ';
-        } catch (IOException e) {
-            return ' ';
+        else {
+            try {
+                return listener.receive(this).toLowerCase().charAt(0);
+            }
+            //  Empty String
+            catch (StringIndexOutOfBoundsException e) {
+                return ' ';
+            }
         }
     }
     /**
@@ -70,15 +91,24 @@ public class AdventureGame {
      * @return The user's input or -1 on failure.
      */
     private int receiveInt() {
-        try {
-            String input = keyboard.readLine();
+        String input;
+        if (usingKeyboard) {
             try {
-                return Integer.parseInt(input);
+                input = keyboard.readLine();
             }
-            catch (NumberFormatException e) {
+            //  Buffered Reader fails
+            catch (IOException e) {
                 return -1;
             }
-        } catch (IOException e) {
+        }
+        else {
+            input = listener.receive(this);
+        }
+        try {
+            return Integer.parseInt(input);
+        }
+        //  String not a number
+        catch (NumberFormatException e) {
             return -1;
         }
     }
@@ -114,9 +144,10 @@ public class AdventureGame {
 
         do {
             System.out.println("The room has:");
-            for (int i = 0; i < contentsArray.length; i++)
+            for (int i = 0; i < contentsArray.length; i++) {
                 System.out.println((i + 1) + ": "
                                    + contentsArray[i].getDesc());
+            }
             System.out.print("Enter the number of the item to grab: ");
             theChoice = receiveInt();
             if (theChoice < 0 || theChoice > contentsArray.length)
@@ -194,6 +225,22 @@ public class AdventureGame {
             }
         }
 
+    }
+    /**
+     * Set up a game in which a messaging system will be used
+     * @param listener The listener to act as the interface
+     */
+    public AdventureGame(AdventureGameModelFacade model, InputListener listener) {
+        this.model = model;
+        this.listener = listener;
+        usingKeyboard = false;
+    }
+    /**
+     * Setup a game in which the keyboard will be used
+     */
+    public AdventureGame() {
+        keyboard = new BufferedReader(new InputStreamReader(System.in));
+        usingKeyboard = true;
     }
 
     public static void main(String args[])
