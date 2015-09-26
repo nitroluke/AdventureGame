@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
+/*
+ * Todd Beckman: 
+ */
 public class AdventureGameView extends GBFrame {
 
     /**

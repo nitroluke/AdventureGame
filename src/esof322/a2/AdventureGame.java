@@ -40,10 +40,48 @@ import java.io.InputStreamReader;
  * Todd Beckman: convertDirection uses char. This is because it is only ever called from char and is
  * guaranteed to have a length of one. It now returns the value directly instead of storing it first
  * and breaking cases. Bad direction input is now -1 which is much more intuitive than 9999. The
- * input character is forced to be lowercase to eliminate half of the test cases
+ * input character is forced to be lowercase to eliminate half of the test cases.
+ * 
+ * Todd Beckman: Move input check out into a separate caller. This involved making the keyboard
+ * reader a private field and making a private method to interface with it. This handles both elegant
+ * design and prepares the program to receive input from the gui instead of the keyboard. An integer
+ * receiver was also made to support integer input rather than first character input.
  */
 public class AdventureGame {
-
+    /** Create the keyboard to control the game; we only need one */
+    private BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
+    /**
+     * Force the program to wait for user input. Gets the first character of input.
+     * @return The user's input or ' ' on failure
+     */
+    private char receiveChar() {
+        try {
+            return keyboard.readLine().toLowerCase().charAt(0);
+        }
+        //  Empty String
+        catch (ArrayIndexOutOfBoundsException e1) {
+            return ' ';
+        } catch (IOException e) {
+            return ' ';
+        }
+    }
+    /**
+     * Force the program to wait for user input. Gets an integer input.
+     * @return The user's input or -1 on failure.
+     */
+    private int receiveInt() {
+        try {
+            String input = keyboard.readLine();
+            try {
+                return Integer.parseInt(input);
+            }
+            catch (NumberFormatException e) {
+                return -1;
+            }
+        } catch (IOException e) {
+            return -1;
+        }
+    }
     /**
      * Our system-wide internal representation of directions is integers. Here, we convert input string directions into integers.
      * Internally, we use integers 0-9 as directions throughout the program. This is a bit of a cludge, but is simpler for now than
@@ -70,10 +108,8 @@ public class AdventureGame {
     /**
      * choosePickupItem determines the specific item that a player wants to pick up.
      */
-    private Item choosePickupItem(Player p, BufferedReader keyB)
-        throws IOException {
+    private Item choosePickupItem(Player p) {
         Item[] contentsArray = (p.getLoc()).getRoomContents();
-        String inputString = "prepare";
         int theChoice = -1;
 
         do {
@@ -82,16 +118,7 @@ public class AdventureGame {
                 System.out.println((i + 1) + ": "
                                    + contentsArray[i].getDesc());
             System.out.print("Enter the number of the item to grab: ");
-            inputString = keyB.readLine();
-            System.out.println('\n');
-            if (inputString.equals(""))
-                inputString = " ";
-            try {
-                theChoice = Integer.parseInt(inputString);
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input.");
-                theChoice = -1;
-            }
+            theChoice = receiveInt();
             if (theChoice < 0 || theChoice > contentsArray.length)
                 System.out.print("That item is not in the room.");
         } while (theChoice < 0 || theChoice > contentsArray.length);
@@ -103,22 +130,14 @@ public class AdventureGame {
     /**
      * chooseDropItem determines the specific item that a player wants to drop
      */
-    private int chooseDropItem(Player p, BufferedReader keyB)
-        throws IOException {
-        String inputString = "prepare";
+    private int chooseDropItem(Player p) {
         int theChoice = -1;
 
         do {
             System.out.println("You are carrying: " +
                                p.showMyThings() + '\n');
             System.out.print("Enter the number of the item to drop: ");
-            inputString = keyB.readLine();
-            try {
-                theChoice = Integer.parseInt(inputString);
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input.");
-                theChoice = -1;
-            }
+            theChoice = receiveInt();
             if (theChoice < 0 || theChoice > p.numItemsCarried())
                 System.out.print("Invalid choice.");
         } while (theChoice < 0 || theChoice > p.numItemsCarried());
@@ -126,18 +145,16 @@ public class AdventureGame {
         return theChoice;
     }
 
-    public void startQuest() throws IOException {
+    public void startQuest() {
         Player thePlayer = new Player();
         Adventure theCave = new Adventure();
         Room startRm = theCave.createAdventure();
         thePlayer.setRoom(startRm);
 
-        /** Create the keyboard to control the game; we only need one */
-        BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
-        String inputString = "prepare";
+        char key = 'p'; //      p for prepare
 
         /* The main query user, get command, interpret, execute cycle. */
-        while (inputString.charAt(0) != 'q') {
+        while (key != 'q') {
             System.out.println(thePlayer.look());
             System.out.println("You are carrying: " +
                                thePlayer.showMyThings() + '\n');
@@ -147,12 +164,8 @@ public class AdventureGame {
             System.out.println("Which way (n,s,e,w,u,d)," +
                                " or grab (g) or toss (t) an item," +
                                " or quit (q)?" + '\n');
-            inputString = keyboard.readLine().toLowerCase();
+            key = receiveChar();
             System.out.println('\n');
-            if (inputString.equals("")) {
-                inputString = " ";
-            }
-            char key = inputString.charAt(0);
             direction = convertDirection(key);
             if (direction != -1) {
                 thePlayer.go(direction);
@@ -165,7 +178,7 @@ public class AdventureGame {
                     System.out.println("The room is empty.");
                 else {
                     Item itemToGrab =
-                        choosePickupItem(thePlayer, keyboard);
+                        choosePickupItem(thePlayer);
                     thePlayer.pickUp(itemToGrab);
                     (thePlayer.getLoc()).removeItem(itemToGrab);
                 }
@@ -175,7 +188,7 @@ public class AdventureGame {
                 if (thePlayer.handsEmpty())
                     System.out.println("You have nothing to drop.");
                 else {
-                    int itemToToss = chooseDropItem(thePlayer, keyboard);
+                    int itemToToss = chooseDropItem(thePlayer);
                     thePlayer.drop(itemToToss);
                 }
             }
