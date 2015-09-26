@@ -4,26 +4,52 @@ Kalvyn Lu
 Luke O'Neill
 Luke Welna
 
+Assignment 2
+============
+
+
 TODO:
-    Directional movement communication interface (Todd - Done)
-    Picking up and dropping items communication interface
-    Updating the description and item text boxes
-    Add an additional text area for info besides room descriptions
-    UML Diagram
+-----
+- Directional movement communication interface (Todd - Done)
+- Picking up and dropping items communication interface
+- Updating the description and item text boxes
+- Add an additional text area for info besides room descriptions
+- UML Diagram
+
 
 Overall Description of Changes
-    
+------------------------------
+    The provided code was an collosal nightmare of spaces and tabs. The very
+first change was to make all of the code fit a uniform format (4 space indent
+and no tabs). This is the agreed-upon format that the group decided to use at
+the start of the semester.
+    The next change was to pull out the game's listener code into a separate
+method so that it could later be modified to behave differently without
+affecting the gameplay.
+    A new InputListener class was made to interface between objects. The
+caller to receive() waits for the caller of send(String message). The test of
+this class was the button presses, which calls the model, which in turn sends
+the appropriate character to the game. This communication system works in
+both directions, so the game is also capable of sending messages with the model
+on the receiving end.
+    In order to assure that the InputListener functions properly, it must be
+initialized and linked to both the game and the model before runtime. Thus,
+the view invokes the model's startQuest method (which then invokes the game's)
+AFTER initialization of both game and model are finished.
+
 
 Interesting Class Relationships, Design Approaches, and Troublesome Things
+--------------------------------------------------------------------------
 
 
 Special Running Instructions
-
+----------------------------
     This game supports text-based and graphical user interface. To run the
 graphical user interface, run AdventureGameView. To run in the console, run
 AdventureGame.
 
 
 Time Spent by each member
-
+-------------------------
 Todd Beckman- 2 hours
+Luke Welna  - 5 minutes
