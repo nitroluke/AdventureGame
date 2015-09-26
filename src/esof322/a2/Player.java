@@ -71,9 +71,6 @@ public class Player {
 
     public String showMyThings() {
         String outString = "";
-        if(myThings == null){
-            return "none";
-        }
         for (int n = 0; n < itemCount; n++)
             outString = outString + Integer.toString(n + 1) + ": "
                         + myThings[n].getDesc() + " ";

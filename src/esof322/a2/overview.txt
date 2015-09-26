@@ -37,6 +37,13 @@ on the receiving end.
 initialized and linked to both the game and the model before runtime. Thus,
 the view invokes the model's startQuest method (which then invokes the game's)
 AFTER initialization of both game and model are finished.
+	The model had no way of knowing the current player's inventory and location.
+In order to display the player's inventory, the Player variable is now global. The
+corresponding getter method was also implemented. The previous implementation of the
+GUI did not allow user input. This became a problem when the player wanted to grab or
+drop an item and needed to choose which item to grab or drop. A text box was 
+implemented to fix this. The player can now input a string into the text box
+and submit it to the model.
 
 
 Interesting Class Relationships, Design Approaches, and Troublesome Things
@@ -54,3 +61,4 @@ Time Spent by each member
 -------------------------
 Todd Beckman- 2 hours
 Luke Welna  - 5 minutes
+Kalvyn Lu - 2 hours

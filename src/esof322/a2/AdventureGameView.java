@@ -9,6 +9,7 @@ import javax.swing.JTextArea;
 
 /*
  * Todd Beckman: Added startQuest method to invoke the model's startQuest
+ * Kalvyn Lu: Added a TextArea for String input. Hooked up grab and drop buttons to the model.
  */
 public class AdventureGameView extends GBFrame {
 

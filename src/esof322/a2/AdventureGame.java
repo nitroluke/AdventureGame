@@ -46,6 +46,8 @@ import java.io.InputStreamReader;
  * reader a private field and making a private method to interface with it. This handles both elegant
  * design and prepares the program to receive input from the gui instead of the keyboard. An integer
  * receiver was also made to support integer input rather than first character input.
+ * 
+ * Kalvyn Lu: Player is now a global variable. Added getPlayer() method
  */
 public class AdventureGame {
     private AdventureGameModelFacade model;
