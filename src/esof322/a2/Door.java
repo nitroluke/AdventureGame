@@ -15,7 +15,6 @@ public class Door implements CaveSite {
      * In this implementation doors are always locked. A player must have the correct key to get through a door. Doors automatically
      * lock after a player passes through.
      */
-
     private Key myKey;
 
     /** The door's location. */

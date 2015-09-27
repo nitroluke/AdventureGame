@@ -3,6 +3,7 @@ package esof322.a2;
 /*
  * Todd Beckman: Provided private game field to be initialized at construction
  * Kalvyn Lu: Added game(), drop(), and takeInput() Methods. The game also shows the inventory.
+ * Dylan Hills: Added roomView, edited getView(). Added AdventureGameView and setGUI().
  */
 public class AdventureGameModelFacade {
 
@@ -12,6 +13,9 @@ public class AdventureGameModelFacade {
     // These methods and fields are left as exercises.
     /** The game from which data will be requested **/
     private AdventureGame game;
+    private AdventureGameView view;
+    private String roomView = "";
+    private String movement = "";
     
     /** The input mechanism to interface with the game **/
     private InputListener listener;
@@ -58,12 +62,19 @@ public class AdventureGameModelFacade {
     public void takeInput(String input){
         listener.send(input);
     }
+    public void setGUI(AdventureGameView gui) {
+    	this.view = gui;
+    }
     
-    
+    public void setView(String views) {
+        this.roomView = views;
+        view.displayCurrentInfo();
+    }
     // You need to finish these getView and getItems methods.
     public String getView() {
-        return ("My view");
+        return roomView;
     }
+    //roomView updated by the game
 
     public String getItems() {
         return game.getPlayer().showMyThings();

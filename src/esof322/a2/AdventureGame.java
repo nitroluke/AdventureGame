@@ -1,5 +1,7 @@
 package esof322.a2;
 
+import java.awt.Dialog.ModalExclusionType;
+
 /**
  * Adventure Game Program Code Copyright (c) 1999 James M. Bieman
  *
@@ -48,8 +50,10 @@ import java.io.InputStreamReader;
  * receiver was also made to support integer input rather than first character input.
  * 
  * Kalvyn Lu: Player is now a global variable. Added getPlayer() method
+ * Dylan Hills: Added model.updateRoomView.
  */
 public class AdventureGame {
+	int counter = 0;
     private AdventureGameModelFacade model;
     
     /** Keep track of which type of input to look for */
@@ -190,12 +194,12 @@ public class AdventureGame {
         Adventure theCave = new Adventure();
         Room startRm = theCave.createAdventure();
         thePlayer.setRoom(startRm);
-
         char key = 'p'; //      p for prepare
 
         /* The main query user, get command, interpret, execute cycle. */
         while (key != 'q') {
             System.out.println(thePlayer.look());
+            model.setView(thePlayer.look());
             System.out.println("You are carrying: " +
                                thePlayer.showMyThings() + '\n');
             /* get next move */

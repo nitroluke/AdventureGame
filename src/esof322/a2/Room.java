@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.ListIterator;
 
 public class Room implements CaveSite {
-
     private String description;
 
     private CaveSite[] side = new CaveSite[6];

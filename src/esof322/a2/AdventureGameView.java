@@ -26,10 +26,10 @@ public class AdventureGameView extends GBFrame {
                  1, 1, 5, 1);
 
     JLabel viewLable = addLabel("Your View: ", 2, 1, 1, 1);
-    JTextArea viewArea = addTextArea("Start", 3, 1, 4, 3);
+    JTextArea viewArea = addTextArea("Start", 3, 1, 3, 7);
 
-    JLabel carryingLable = addLabel("You are carying: ", 6, 1, 1, 1);
-    JTextArea carryingArea = addTextArea("Nothing", 7, 1, 4, 3);
+    JLabel carryingLable = addLabel("You are carying: ", 6, 4, 1, 1);
+    JTextArea carryingArea = addTextArea("Nothing", 7, 4, 3, 3);
 
     JLabel separator1 = addLabel
         ("-----------------------------------------------------------------"
@@ -61,7 +61,6 @@ public class AdventureGameView extends GBFrame {
 
         viewArea.setEditable(false);
         carryingArea.setEditable(false);
-        displayCurrentInfo();
     }
 
     // buttonClicked method--------------------------------------
@@ -93,13 +92,11 @@ public class AdventureGameView extends GBFrame {
             model.takeInput(textInput.getText());
             textInput.replaceRange("", 0, textInput.getText().length());
         }
-
-        displayCurrentInfo();
     }
 
     // Private methods-------------------------------------------
 
-    private void displayCurrentInfo() {
+    public void displayCurrentInfo() {
         viewArea.setText(model.getView());
         carryingArea.setText(model.getItems());
     }
@@ -120,6 +117,7 @@ public class AdventureGameView extends GBFrame {
     }
     
     public void startQuest() {
+    	model.setGUI(this);
         model.startQuest();
     }
 
