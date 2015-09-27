@@ -14,7 +14,7 @@ TODO:
 - Picking up and dropping items communication interface(Kalvyn - Done)
 - Updating the description and item text boxes (Dylan - Done)
 - Add an additional text area for info besides room descriptions
-- UML Diagram
+- UML Diagram (Luke - Done, will update again when everything is finished with code)
 - Paste git logs into this file
 
 
@@ -68,3 +68,4 @@ Todd Beckman- 2 hours
 Luke Welna  - 5 minutes
 Kalvyn Lu - 2 hours
 Dylan Hills - 2 hours
+Luke O’Neill - 1 hour
