@@ -46,7 +46,10 @@ implemented to fix this. The player can now input a string into the text box
 and submit it to the model.
     The model now includes an instance of AdventureGameView. This way the view can be
 edited directly from the model.
-
+    The enter() method in the CaveSite interface (and therefore Room, Door, and Wall) now
+returns a string. This string is displayed in the actionArea in the GUI. 
+    The GUI now has an ActionArea that displays the action the player made. It also displays
+instructions for grabbing and dropping items.
 
 Interesting Class Relationships, Design Approaches, and Troublesome Things
 --------------------------------------------------------------------------

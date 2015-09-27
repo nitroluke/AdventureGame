@@ -9,7 +9,9 @@ package esof322.a2;
  **/
 
 // interface CaveSite
-
+/*
+ * Dylan Hills: enter() now returns string
+ */
 public interface CaveSite {
-    void enter(Player p);
+    String enter(Player p);
 }

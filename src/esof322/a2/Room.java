@@ -58,12 +58,13 @@ public class Room implements CaveSite {
         return contentsArray;
     }
 
-    public void enter(Player p) {
+    public String enter(Player p) {
         p.setLoc(this);
+        return "Entered a new room";
     }
 
-    public void exit(int direction, Player p) {
-        side[direction].enter(p);
+    public String exit(int direction, Player p) {
+        return side[direction].enter(p);
     }
 
     public String getDesc() {

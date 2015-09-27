@@ -10,6 +10,7 @@ import javax.swing.JTextArea;
 /*
  * Todd Beckman: Added startQuest method to invoke the model's startQuest
  * Kalvyn Lu: Added a TextArea for String input. Hooked up grab and drop buttons to the model.
+ * Dylan Hills: Added an action TextArea to display what the player just did.
  */
 public class AdventureGameView extends GBFrame {
 
@@ -31,6 +32,8 @@ public class AdventureGameView extends GBFrame {
     JLabel carryingLable = addLabel("You are carying: ", 6, 4, 1, 1);
     JTextArea carryingArea = addTextArea("Nothing", 7, 4, 3, 3);
 
+    JLabel actionLable = addLabel("Action:",2,4,1,1);
+    JTextArea actionArea = addTextArea("Action",3,4,3,3);
     JLabel separator1 = addLabel
         ("-----------------------------------------------------------------"
          , 10, 1, 4, 1);
@@ -99,6 +102,7 @@ public class AdventureGameView extends GBFrame {
     public void displayCurrentInfo() {
         viewArea.setText(model.getView());
         carryingArea.setText(model.getItems());
+        actionArea.setText(model.getAction());
     }
 
     // Left as an exercise.

@@ -7,7 +7,9 @@ package esof322.a2;
  *
  * The main routine is AdventureGame.main
  **/
-
+/*
+ * drop() and go() now return strings of the item and the room respectively.
+ */
 public class Player {
 
     private Room myLoc;
@@ -24,8 +26,8 @@ public class Player {
         return myLoc.getDesc();
     }
 
-    public void go(int direction) {
-        myLoc.exit(direction, this);
+    public String go(int direction) {
+        return myLoc.exit(direction, this);
     }
 
     public void pickUp(Item i) {
@@ -43,22 +45,26 @@ public class Player {
         return false;
     }
 
-    public void drop(int itemNum) {
+    public String drop(int itemNum) {
+    	String returnString = "";
         if (itemNum > 0 & itemNum <= itemCount) {
             switch (itemNum) {
             case 1: {
+                returnString = myThings[0].getDesc();
                 myLoc.addItem(myThings[0]);
                 myThings[0] = myThings[1];
                 itemCount--;
                 break;
             }
             case 2: {
+                returnString = myThings[1].getDesc();
                 myLoc.addItem(myThings[1]);
                 itemCount--;
                 break;
             }
             }
         }
+        return returnString;
     }
 
     public void setLoc(Room r) {

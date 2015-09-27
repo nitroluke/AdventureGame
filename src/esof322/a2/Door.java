@@ -29,10 +29,12 @@ public class Door implements CaveSite {
     }
 
     /** A player will need the correct key to enter. */
-    public void enter(Player p) {
+    public String enter(Player p) {
+    	String outputString = "";
         if (p.haveItem(myKey)) {
             System.out.println("Your key works! The door creaks open,");
             System.out.println("and slams behind you after you pass through.");
+            outputString = "Your key works! The door creaks open,\nand slams behind you after you pass through.";
             if (p.getLoc() == outSite)
                 inSite.enter(p);
             else if (p.getLoc() == inSite)
@@ -41,7 +43,10 @@ public class Door implements CaveSite {
         else {
             System.out.println("You don't have the key for this door!");
             System.out.println("Sorry.");
+            outputString = "You don't have the key for this door! \n Sorry.";
+
         }
+        return outputString;
     }
 
 }

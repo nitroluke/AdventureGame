@@ -50,7 +50,7 @@ import java.io.InputStreamReader;
  * receiver was also made to support integer input rather than first character input.
  * 
  * Kalvyn Lu: Player is now a global variable. Added getPlayer() method
- * Dylan Hills: Added model.updateRoomView.
+ * Dylan Hills: Added model.setView and model.setAction to alter what the GUI displays.
  */
 public class AdventureGame {
 	int counter = 0;
@@ -198,6 +198,7 @@ public class AdventureGame {
 
         /* The main query user, get command, interpret, execute cycle. */
         while (key != 'q') {
+        	//model.setAction("hello" + counter++);
             System.out.println(thePlayer.look());
             model.setView(thePlayer.look());
             System.out.println("You are carrying: " +
@@ -212,28 +213,42 @@ public class AdventureGame {
             System.out.println('\n');
             direction = convertDirection(key);
             if (direction != -1) {
-                thePlayer.go(direction);
+                model.setAction(thePlayer.go(direction));
             }
             //	Grab item
             else if (key == 'g') {
                 if (thePlayer.handsFull())
+                {
                     System.out.println("Your hands are full.");
+                    model.setAction("Your hands are full.");
+                }
                 else if ((thePlayer.getLoc()).roomEmpty())
+                {
                     System.out.println("The room is empty.");
-                else {
+                    model.setAction("The room is empty.");
+                }
+                else 
+                {
+                    model.setAction("Enter the number of the item to grab.");
                     Item itemToGrab =
                         choosePickupItem(thePlayer);
                     thePlayer.pickUp(itemToGrab);
                     (thePlayer.getLoc()).removeItem(itemToGrab);
+                    model.setAction("Grabbed the item");
                 }
             }
             //  Toss Item
             else if (key == 't') {
                 if (thePlayer.handsEmpty())
+                {
                     System.out.println("You have nothing to drop.");
-                else {
+                    model.setAction("You have nothing to drop.");
+                }
+                else
+                {
+                    model.setAction("Enter the number of item to drop.");
                     int itemToToss = chooseDropItem(thePlayer);
-                    thePlayer.drop(itemToToss);
+                    model.setAction("Dropped "+thePlayer.drop(itemToToss));
                 }
             }
         }
