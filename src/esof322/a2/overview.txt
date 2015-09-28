@@ -51,17 +51,37 @@ project.
 Interesting Class Relationships, Design Approaches, and Troublesome Things
 --------------------------------------------------------------------------
 
+    One of the more interesting problems to solve about this project was 
+forcing  the game, which is not hooked up to a GUI, to wait for the GUI's 
+input instead  of terminal input. To solve this, a separate InputListener 
+class was made. It forces the listening class (usually the game class) to 
+sleep until a separate input thread (usually the model, triggered by the GUI) 
+provides it with the input it was waiting for. This listener is a compact 
+class that can be copied for use in future projects due to its simple, elegant 
+stucture and its usefulness.
+    In order for the classes to communicate correctly, it was necessary for 
+the GUI and game to see and be seen by the model, but not with each other. 
+However, since the program begins in the GUI, it is necessary to construct the
+model from it (and the game from it, without the view knowing). Thus, the 
+startQuest method needed to be called from the furthest out layer and fired to 
+all other classes in the right order so that initialization worked properly.
+    The design of the project was laid out in the specifications, so there were
+no real issues with developing this. Keeping the blackboxing in mind led to a
+very simple and efficient system that should run from the terminal or through 
+the GUI, with the display differences being handled automatically.
+
 
 Special Running Instructions
 ----------------------------
     This game supports text-based and graphical user interface. To run the
-graphical user interface, run AdventureGameView. To run in the console, run
-AdventureGame.
+graphical user interface, run AdventureGameView.main. To run in the console, 
+run AdventureGame.main. The game functions for both methods, but you will also
+find that there is no redundant display.
 
 
 Time Spent by each member
 -------------------------
-Todd Beckman- 2 hours
+Todd Beckman- 3 hours
 Luke Welna  - 5 minutes
 Kalvyn Lu - 2 hours
 Dylan Hills - 2 hours
