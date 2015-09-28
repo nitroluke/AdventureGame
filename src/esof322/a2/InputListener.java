@@ -48,7 +48,6 @@ public class InputListener {
         synchronized(listenObject) {
             this.message = message;
             listenObject.notifyAll();
-            System.out.println("Sent " + message);
         }
     }
 }

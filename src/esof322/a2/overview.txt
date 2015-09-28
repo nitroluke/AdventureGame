@@ -30,7 +30,9 @@ AFTER initialization of both game and model are finished.
 location. In order to display the player's inventory, the Player variable is
 now global. The corresponding getter method was also implemented. The previous
 implementation of the GUI did not allow user input. This became a problem when
-the player wanted to grab or drop an item and needed to choose which item to grab or drop. A text box was implemented to fix this. The player can now input a string into the text box and submit it to the model.
+the player wanted to grab or drop an item and needed to choose which item to
+grab or drop. A text box was implemented to fix this. The player can now input
+a string into the text box and submit it to the model.
     The model now includes an instance of AdventureGameView. This way the view 
 can be edited directly from the model.
     The enter() method in the CaveSite interface (and therefore Room, Door, 
@@ -38,6 +40,12 @@ and Wall) now returns a string. This string is displayed in the actionArea in
 the GUI. 
     The GUI now has an ActionArea that displays the action the player made. It 
 also displays instructions for grabbing and dropping items.
+    The UML was at this stage ready to be generated and so was generated.
+    Among the final touches is a change in which the messages are printed
+through printView and printAction methods which enforce the same messages in
+both terminal and gui game modes while still updating the correct part of the
+gui. Commenting, correcting typos, and final debugging touches finished off the
+project.
 
 
 Interesting Class Relationships, Design Approaches, and Troublesome Things

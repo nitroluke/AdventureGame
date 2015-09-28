@@ -35,7 +35,7 @@ public class AdventureGameView extends GBFrame {
     JLabel viewLabel = addLabel("Your View: ", 2, 1, 1, 1);
     JTextArea viewArea = addTextArea("Start", 3, 1, 3, 7);
 
-    JLabel carryingLabel = addLabel("You are carying: ", 6, 4, 1, 1);
+    JLabel carryingLabel = addLabel("You are carrying: ", 6, 4, 1, 1);
     JTextArea carryingArea = addTextArea("Nothing", 7, 4, 3, 3);
 
     JLabel actionLabel = addLabel("Action:",2,4,1,1);
@@ -57,7 +57,7 @@ public class AdventureGameView extends GBFrame {
     JButton upButton = addButton("Up", 12, 3, 1, 1);
     JButton downButton = addButton("Down", 14, 3, 1, 1);
     
-    JTextArea textInput = addTextArea("Input",15,3,1,1);
+    JTextArea textInput = addTextArea("1",15,3,1,1);
     JButton textInputButton = addButton("Submit",15,4,1,1);
 
     AdventureGameModelFacade model;

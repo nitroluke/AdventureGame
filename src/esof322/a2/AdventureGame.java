@@ -56,6 +56,10 @@ import java.io.InputStreamReader;
  * 
  * Kalvyn Lu: Player is now a global variable. Added getPlayer() method
  * Dylan Hills: Added model.setView and model.setAction to alter what the GUI displays.
+ * 
+ * Todd Beckman: Pulled out the prints into separate methods so that everything is printed through the
+ * same methods and thus guarantee the same messages are printed (and only once). Also fixed an
+ * off-by-one error in grab/drop that was an issue in the provided code.
  */
 public class AdventureGame {
 	int counter = 0;
@@ -69,17 +73,18 @@ public class AdventureGame {
     
     /** Create the input to control the game; we only need one */
     private InputListener listener;
+
+    /** The current player **/
+    private Player thePlayer = new Player();
+    
+    /** Gets the player of the game **/
+    public Player getPlayer(){
+        return thePlayer;
+    }
     /**
      * Force the program to wait for user input. Gets the first character of input.
      * @return The user's input or ' ' on failure
      */
-    
-    Player thePlayer = new Player();
-    
-    public Player getPlayer(){
-        return thePlayer;
-    }
-    
     private char receiveChar() {
         if (usingKeyboard) {
             try {
@@ -130,6 +135,32 @@ public class AdventureGame {
             return -1;
         }
     }
+    
+    /** Prints a message to the view slot
+     * @param message The message to print
+     */
+    private void printView(String message) {
+        if (usingKeyboard) {
+            System.out.println(message);
+        }
+        else {
+            model.setView(message);
+        }
+    }
+    /**
+     * Prints a message to the action slot
+     * @param message The message to print
+     */
+    private void printAction(String message) {
+        if (usingKeyboard) {
+            System.out.println(message);
+        }
+        else {
+            model.setAction(message);
+        }
+    }
+    
+    
     /**
      * Our system-wide internal representation of directions is integers. Here, we convert input string directions into integers.
      * Internally, we use integers 0-9 as directions throughout the program. This is a bit of a cludge, but is simpler for now than
@@ -161,17 +192,17 @@ public class AdventureGame {
         int theChoice = -1;
 
         do {
-            System.out.println("The room has:");
+            String message = "The room has:\n";
             for (int i = 0; i < contentsArray.length; i++) {
-                System.out.println((i + 1) + ": "
-                                   + contentsArray[i].getDesc());
+                message += (i + 1) + ": "
+                                   + contentsArray[i].getDesc() + "\n";
             }
-            System.out.print("Enter the number of the item to grab: ");
+            message += "Enter the number of the item to grab: ";
+            printView(message);
             theChoice = receiveInt();
             if (theChoice <= 0 || theChoice > contentsArray.length)
-                System.out.print("That item is not in the room.");
-        } while (theChoice < 0 || theChoice > contentsArray.length);
-
+                printView("That item is not in the room.");
+        } while (theChoice <= 0 || theChoice > contentsArray.length);
         return contentsArray[theChoice - 1];
 
     }
@@ -181,15 +212,15 @@ public class AdventureGame {
      */
     private int chooseDropItem(Player p) {
         int theChoice = -1;
-
         do {
-            System.out.println("You are carrying: " +
-                               p.showMyThings() + '\n');
-            System.out.print("Enter the number of the item to drop: ");
+            String message = "You are carrying: " +
+                               p.showMyThings() + '\n';
+            message += "Enter the number of the item to drop: ";
+            printView(message);
             theChoice = receiveInt();
-            if (theChoice < 0 || theChoice > p.numItemsCarried())
-                System.out.print("Invalid choice.");
-        } while (theChoice < 0 || theChoice > p.numItemsCarried());
+            if (theChoice <= 0 || theChoice > p.numItemsCarried())
+                printView("Invalid choice.");
+        } while (theChoice <= 0 || theChoice > p.numItemsCarried());
 
         return theChoice;
     }
@@ -204,56 +235,45 @@ public class AdventureGame {
         /* The main query user, get command, interpret, execute cycle. */
         while (key != 'q') {
         	//model.setAction("hello" + counter++);
-            System.out.println(thePlayer.look());
-            model.setView(thePlayer.look());
-            System.out.println("You are carrying: " +
+            printView(thePlayer.look() + "\n\nYou are carrying: " +
                                thePlayer.showMyThings() + '\n');
             /* get next move */
             int direction = -1;
-
-            System.out.println("Which way (n,s,e,w,u,d)," +
-                               " or grab (g) or toss (t) an item," +
-                               " or quit (q)?" + '\n');
+            //  We only care about this in keyboard mode
+            if (usingKeyboard) {
+                System.out.println("Which way (n,s,e,w,u,d),\n" +
+                   " or grab (g) or toss (t) an item,\n" +
+                   " or quit (q)?" + '\n');
+            }
             key = receiveChar();
-            System.out.println('\n');
             direction = convertDirection(key);
             if (direction != -1) {
-                model.setAction(thePlayer.go(direction));
+                printAction(thePlayer.go(direction));
             }
             //	Grab item
             else if (key == 'g') {
-                if (thePlayer.handsFull())
-                {
-                    System.out.println("Your hands are full.");
-                    model.setAction("Your hands are full.");
+                if (thePlayer.handsFull()) {
+                    printAction("Your hands are full.");
                 }
-                else if ((thePlayer.getLoc()).roomEmpty())
-                {
-                    System.out.println("The room is empty.");
-                    model.setAction("The room is empty.");
+                else if ((thePlayer.getLoc()).roomEmpty()) {
+                    printAction("The room is empty.");
                 }
-                else 
-                {
-                    model.setAction("Enter the number of the item to grab.");
+                else {
                     Item itemToGrab =
                         choosePickupItem(thePlayer);
                     thePlayer.pickUp(itemToGrab);
                     (thePlayer.getLoc()).removeItem(itemToGrab);
-                    model.setAction("Grabbed the item");
+                    printAction("Grabbed the item " + itemToGrab.getDesc());
                 }
             }
             //  Toss Item
             else if (key == 't') {
-                if (thePlayer.handsEmpty())
-                {
-                    System.out.println("You have nothing to drop.");
-                    model.setAction("You have nothing to drop.");
+                if (thePlayer.handsEmpty()) {
+                    printAction("You have nothing to drop.");
                 }
-                else
-                {
-                    model.setAction("Enter the number of item to drop.");
+                else {
                     int itemToToss = chooseDropItem(thePlayer);
-                    model.setAction("Dropped "+thePlayer.drop(itemToToss));
+                    printAction("Dropped "+thePlayer.drop(itemToToss));
                 }
             }
         }

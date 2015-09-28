@@ -21,7 +21,6 @@ public class Wall implements CaveSite {
 
     public String enter(Player p)
     {
-        System.out.println("Ouch! That hurts.");
         return "Ouch! That hurts.";
     }
 

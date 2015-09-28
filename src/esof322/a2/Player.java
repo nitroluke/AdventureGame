@@ -1,5 +1,7 @@
 package esof322.a2;
 
+import java.util.Arrays;
+
 /**
  * Adventure Game Program Code Copyright (c) 1999 James M. Bieman
  *
@@ -87,7 +89,7 @@ public class Player {
         String outString = "";
         for (int n = 0; n < itemCount; n++)
             outString = outString + Integer.toString(n + 1) + ": "
-                        + myThings[n].getDesc() + " ";
+                        + myThings[n].getDesc() + "\n";
         return outString;
     }
 
