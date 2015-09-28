@@ -9,6 +9,13 @@ package esof322.a2;
  **/
 
 // class Treasure
+/*
+ * Todd Beckman
+ * Dylan Hills
+ * Kalvyn Lu
+ * Luke O'Neill
+ * Luke Welna
+ */
 
 public class Treasure extends Item {
 }

@@ -12,6 +12,13 @@ package esof322.a2;
  **/
 
 // class Room
+/*
+ * Todd Beckman
+ * Dylan Hills
+ * Kalvyn Lu
+ * Luke O'Neill
+ * Luke Welna
+ */
 
 import java.util.ArrayList;
 import java.util.ListIterator;

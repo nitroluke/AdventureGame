@@ -7,8 +7,16 @@ package esof322.a2;
  *
  * The main routine is AdventureGame.main
  **/
+
 /*
- * drop() and go() now return strings of the item and the room respectively.
+ * Todd Beckman
+ * Dylan Hills
+ * Kalvyn Lu
+ * Luke O'Neill
+ * Luke Welna
+ */
+/*
+ * Dylan Hills: drop() and go() now return strings of the item and the room respectively.
  */
 public class Player {
 

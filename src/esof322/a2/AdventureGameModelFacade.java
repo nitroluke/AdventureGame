@@ -1,6 +1,13 @@
 package esof322.a2;
 
 /*
+ * Todd Beckman
+ * Dylan Hills
+ * Kalvyn Lu
+ * Luke O'Neill
+ * Luke Welna
+ */
+/*
  * Todd Beckman: Provided private game field to be initialized at construction
  * Kalvyn Lu: Added game(), drop(), and takeInput() Methods. The game also shows the inventory.
  * Dylan Hills: Added roomView, action, getView(), setView(), getAction(),setAction(). Added AdventureGameView and setGUI().

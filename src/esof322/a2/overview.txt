@@ -7,12 +7,6 @@ Luke Welna
 Assignment 2
 ============
 
-
-TODO:
------
-- Paste git logs into this file
-
-
 Overall Description of Changes
 ------------------------------
     The provided code was an collosal nightmare of spaces and tabs. The very

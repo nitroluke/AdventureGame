@@ -1,7 +1,5 @@
 package esof322.a2;
 
-import java.awt.Dialog.ModalExclusionType;
-
 /**
  * Adventure Game Program Code Copyright (c) 1999 James M. Bieman
  *
@@ -38,6 +36,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/*
+ * Todd Beckman
+ * Dylan Hills
+ * Kalvyn Lu
+ * Luke O'Neill
+ * Luke Welna
+ */
 /*
  * Todd Beckman: convertDirection uses char. This is because it is only ever called from char and is
  * guaranteed to have a length of one. It now returns the value directly instead of storing it first
@@ -163,7 +168,7 @@ public class AdventureGame {
             }
             System.out.print("Enter the number of the item to grab: ");
             theChoice = receiveInt();
-            if (theChoice < 0 || theChoice > contentsArray.length)
+            if (theChoice <= 0 || theChoice > contentsArray.length)
                 System.out.print("That item is not in the room.");
         } while (theChoice < 0 || theChoice > contentsArray.length);
 

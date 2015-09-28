@@ -9,6 +9,13 @@ package esof322.a2;
  **/
 
 // class Item
+/*
+ * Todd Beckman
+ * Dylan Hills
+ * Kalvyn Lu
+ * Luke O'Neill
+ * Luke Welna
+ */
 
 public class Item {
 

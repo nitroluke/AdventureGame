@@ -3,10 +3,16 @@ package esof322.a2;
 import BreezySwing.GBFrame;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
+/*
+ * Todd Beckman
+ * Dylan Hills
+ * Kalvyn Lu
+ * Luke O'Neill
+ * Luke Welna
+ */
 /*
  * Todd Beckman: Added startQuest method to invoke the model's startQuest
  * Kalvyn Lu: Added a TextArea for String input. Hooked up grab and drop buttons to the model.
@@ -26,13 +32,13 @@ public class AdventureGameView extends GBFrame {
                  " Java implementation Copyright (c) 1999-2012 by James M. Bieman",
                  1, 1, 5, 1);
 
-    JLabel viewLable = addLabel("Your View: ", 2, 1, 1, 1);
+    JLabel viewLabel = addLabel("Your View: ", 2, 1, 1, 1);
     JTextArea viewArea = addTextArea("Start", 3, 1, 3, 7);
 
-    JLabel carryingLable = addLabel("You are carying: ", 6, 4, 1, 1);
+    JLabel carryingLabel = addLabel("You are carying: ", 6, 4, 1, 1);
     JTextArea carryingArea = addTextArea("Nothing", 7, 4, 3, 3);
 
-    JLabel actionLable = addLabel("Action:",2,4,1,1);
+    JLabel actionLabel = addLabel("Action:",2,4,1,1);
     JTextArea actionArea = addTextArea("Action",3,4,3,3);
     JLabel separator1 = addLabel
         ("-----------------------------------------------------------------"
