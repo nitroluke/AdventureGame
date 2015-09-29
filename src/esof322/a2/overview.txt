@@ -86,3 +86,127 @@ Luke Welna  - 5 minutes
 Kalvyn Lu - 2 hours
 Dylan Hills - 2 hours
 Luke O’Neill - 1 hour
+
+
+Git Logs (Descending)
+--------
+
+commit c72ecb36750e5740ebe16bcd2de354297e783c45
+Author: Todd Beckman <toddbeckman1@gmail.com>
+Date:   Mon Sep 28 14:33:42 2015 -0600
+
+    updated overview.txt
+
+commit 0d5bfefb798093f581ee6766b83387c771870fbd
+Author: Todd Beckman <toddbeckman1@gmail.com>
+Date:   Mon Sep 28 14:13:24 2015 -0600
+
+    consisted printing, fixed minor errors, fixed typos, fixed comments
+
+commit 7358dbb054942e33a81ca5153881b179cbd5515f
+Author: Todd Beckman <toddbeckman1@gmail.com>
+Date:   Mon Sep 28 13:43:18 2015 -0600
+
+    met some specifications for the assignment
+
+commit 40efedf036250be900db86e62021da769c518ccf
+Author: Todd Beckman <toddbeckman1@gmail.com>
+Date:   Sun Sep 27 22:26:53 2015 -0600
+
+    moved class diagram and updated overview file
+
+commit 722e54b3f39313f8f040dc40caa37eb03f820259
+Author: Luke O'Neill <Athena@Lukes-MacBook-Pro.local>
+Date:   Sun Sep 27 16:15:00 2015 -0600
+
+    Updated overview.txt
+
+commit f04b9bdf069d6f6d354712f6f5638846557ea8a7
+Author: Luke O'Neill <Athena@Lukes-MacBook-Pro.local>
+Date:   Sun Sep 27 16:02:04 2015 -0600
+
+    created uml diagram
+
+commit 789f303a8919d72eb5d2943c3e0776487f5eb41d
+Author: dylanhills <dylanhills333@gmail.com>
+Date:   Sun Sep 27 14:52:26 2015 -0600
+
+    GUI now has an ActionArea that displays which action the player took.
+
+commit bc97b543d48c9f279a366f9da5a050a19f447ea0
+Author: dylanhills <dylanhills333@gmail.com>
+Date:   Sun Sep 27 13:45:31 2015 -0600
+
+    Room view is now displayed on the GUI
+
+commit a2a23e8b894b5eb3e60e9cf5ca0ad1c4b27d1de4
+Author: kalvyn-lu <kalvynlu@gmail.com>
+Date:   Sat Sep 26 15:42:21 2015 -0700
+
+    Comments and Overview updated
+
+commit a923265c4f24b319d8ce75441dc29a0122d9de4e
+Author: kalvyn-lu <kalvynlu@gmail.com>
+Date:   Sat Sep 26 15:26:51 2015 -0700
+
+    Dropping works
+
+commit 8bda6d6200eb7e59893e4d8fdd13bb442756d853
+Author: kalvyn-lu <kalvynlu@gmail.com>
+Date:   Sat Sep 26 15:23:38 2015 -0700
+
+    Gui now displays items in bag after grabbing
+
+commit 2dafaa0c9e8cc164d974691ac51235525f482017
+Author: kalvyn-lu <kalvynlu@gmail.com>
+Date:   Sat Sep 26 14:53:40 2015 -0700
+
+    grab done except for gui
+
+commit 5361311d5bdccc7554a153233a04e806ec19d37d
+Author: Todd Beckman <toddbeckman1@gmail.com>
+Date:   Fri Sep 25 21:12:29 2015 -0600
+
+    removed unnecessary parameter from the InputListener.recieve() method
+
+commit 457ad8b62bb2bce642b805dd105da42f9a82e8ff
+Author: Todd Beckman <toddbeckman1@gmail.com>
+Date:   Fri Sep 25 21:09:59 2015 -0600
+
+    updated overview.txt to contain first batch of commit data
+
+commit d5d66a91ee0f3d458ad73c75455c8ab0296994b5
+Author: Todd Beckman <toddbeckman1@gmail.com>
+Date:   Fri Sep 25 20:59:30 2015 -0600
+
+    prepared overview.txt
+
+commit b59e1e21314060e4fd70ca335dd0e8dc141eab4c
+Author: Todd Beckman <toddbeckman1@gmail.com>
+Date:   Fri Sep 25 20:49:50 2015 -0600
+
+    hooked directional input into gui
+
+commit 2725c1cfd0da81fefa97e78396e6dfa2bcae6471
+Author: Todd Beckman <toddbeckman1@gmail.com>
+Date:   Fri Sep 25 19:50:53 2015 -0600
+
+    centralized input methods to prepare for change in input
+
+commit 03b00f8d154f1020c9bda4f6a55470f0aa5e69c4
+Author: Todd Beckman <toddbeckman1@gmail.com>
+Date:   Fri Sep 25 19:21:37 2015 -0600
+
+    made text input code less ugly
+
+commit 23ba61e5959a031d8809140561c81cf17ecf3456
+Author: Luke Welna <lwelna@sofi.org>
+Date:   Tue Sep 22 18:39:54 2015 -0600
+
+    Format all of the awful code to be readable.
+    
+    Convert awful combination of tabs and spaces to just spaces
+
+    Organize imports.
+
+    Actually enforce a coding standard.

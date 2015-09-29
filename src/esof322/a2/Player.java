@@ -1,7 +1,5 @@
 package esof322.a2;
 
-import java.util.Arrays;
-
 /**
  * Adventure Game Program Code Copyright (c) 1999 James M. Bieman
  *
