@@ -4,3 +4,6 @@ bin/
 .classpath
 *.jar
 .DS_Store
+src/esof322/a3/
+test/esof322/a3/
+test/esof322/a1
