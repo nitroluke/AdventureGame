@@ -2,6 +2,8 @@
 bin/
 .project
 .classpath
+*.pdf
+*.xml
 *.jar
 .DS_Store
 src/esof322/a3/
