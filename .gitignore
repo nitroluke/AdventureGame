@@ -8,4 +8,6 @@ bin/
 .DS_Store
 src/esof322/a3/
 test/esof322/a3/
+src/esof322/a4/
+test/esof322/a4/
 test/esof322/a1
