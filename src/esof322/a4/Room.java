@@ -42,10 +42,7 @@ public class Room implements CaveSite {
     }
 
     public void addItem(Item theItem) {
-
         contents.add(theItem);
-        System.out.println(contents.get(0).getDesc());
-
     }
 
     public void removeItem(Item theItem) {

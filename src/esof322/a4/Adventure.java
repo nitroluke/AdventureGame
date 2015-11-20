@@ -1,5 +1,6 @@
 package esof322.a4;
 
+import esof322.a4.concreteLevelFactories.Level0Factory;
 /*
  * Todd Beckman
  * Dylan Hills
@@ -11,6 +12,32 @@ package esof322.a4;
  * Adventure Game Program Code Copyright (c) 1999 James M. Bieman
  * <p>
  * To compile: javac AdventureGame.java To run: java AdventureGame
+ * <p>
+ * The main routine is AdventureGame.main
+ * <p>
+ * Adventure Game Program Code Copyright (c) 1999-2012 James M. Bieman The Adventure game is based on the "Colossal Cave Adventure"
+ * originally designed by Will Crowther and implemented by Will Crowther and Don Wood in Fortran in 1975 and 1976.
+ * <p>
+ * This micro-version is a variant of the original cave system and is implemented in Java with just a few rooms and with a much more
+ * limited vocabulary.
+ * <p>
+ * Updated August 2010, January 2012 - Code is put into package cs314.a2 to match current CS314 coding standards. Updated January
+ * 2012 - Renamed as the "Adventure Game"
+ * <p>
+ * To compile: javac cs314.a2.AdventureGame.java To run: java cs314.a2.AdventureGame
+ * <p>
+ * The main routine is AdventureGame.main
+ * <p>
+ * Adventure Game Program Code Copyright (c) 1999-2012 James M. Bieman The Adventure game is based on the "Colossal Cave Adventure"
+ * originally designed by Will Crowther and implemented by Will Crowther and Don Wood in Fortran in 1975 and 1976.
+ * <p>
+ * This micro-version is a variant of the original cave system and is implemented in Java with just a few rooms and with a much more
+ * limited vocabulary.
+ * <p>
+ * Updated August 2010, January 2012 - Code is put into package cs314.a2 to match current CS314 coding standards. Updated January
+ * 2012 - Renamed as the "Adventure Game"
+ * <p>
+ * To compile: javac cs314.a2.AdventureGame.java To run: java cs314.a2.AdventureGame
  * <p>
  * The main routine is AdventureGame.main
  * <p>
@@ -57,34 +84,33 @@ package esof322.a4;
 
 public class Adventure {
 
-    private Room entrance;
-
     public Room createAdventure() {
         // The outside:
-        Room outside = new Room("You are standing outside, on the edge of a cliff;\n" +
-                                " A creek runs alongside the cliff.\n" +
-                                "a cave opens straight down (outside).");
+        Level0Factory lvl0Factory = new Level0Factory();
+
+        Room outside = lvl0Factory.createRoom("You are standing outside, on the edge of a cliff;\n" +
+                                              " A creek runs alongside the cliff.\n" +
+                                              "a cave opens straight down (outside).");
 
         // Room 1:
-        Room r1 = new Room("The darkness is pierced by a bright light overhead.\n"
-                           + "There is a narrow, dark passage to the east (r1).");
+        Room r1 = lvl0Factory.createRoom("The darkness is pierced by a bright light overhead.\n"
+                                         + "There is a narrow, dark passage to the east (r1).");
 
         // Connect the outside to Room 1:
         outside.setSide(5, r1);
         r1.setSide(4, outside);
-        entrance = outside;
 
         // Room 2:
-        Room r2 = new Room("You are in a gloomy oval shaped room with grey walls.\n" +
-                           "There is a dim light to the west, and a narrow\n" +
-                           "dark hole to the east only about 18 inches high (r2).");
+        Room r2 = lvl0Factory.createRoom("You are in a gloomy oval shaped room with grey walls.\n" +
+                                         "There is a dim light to the west, and a narrow\n" +
+                                         "dark hole to the east only about 18 inches high (r2).");
 
         // Room 3:
-        Room r3 = new Room("You really need your flashlight here. \n" +
-                           "There is a wide passage that quickly narrows\n"
-                           + "to the west, a bright opening to the east,\n"
-                           + "and a deep hole that appears to have no bottom\n"
-                           + "in the middle of the room (r3).");
+        Room r3 = lvl0Factory.createRoom("You really need your flashlight here. \n" +
+                                         "There is a wide passage that quickly narrows\n"
+                                         + "to the west, a bright opening to the east,\n"
+                                         + "and a deep hole that appears to have no bottom\n"
+                                         + "in the middle of the room (r3).");
 
         // Connect Rooms 1, 2, & 3:
         r1.setSide(2, r2);
@@ -93,22 +119,22 @@ public class Adventure {
         r3.setSide(3, r2);
 
         // Room 4:
-        Room r4 = new Room("There is what looks like a giant grizzly bear\n"
-                           + "skull in a corner.  A passage leads to the west,\n"
-                           + "another one to the north, and a slippery route\n"
-                           + "goes down steeply. You can hear the shrieks of bats (r4).");
+        Room r4 = lvl0Factory.createRoom("There is what looks like a giant grizzly bear\n"
+                                         + "skull in a corner.  A passage leads to the west,\n"
+                                         + "another one to the north, and a slippery route\n"
+                                         + "goes down steeply. You can hear the shrieks of bats (r4).");
 
         // Room 5:
-        Room r5 = new Room("There is a dim light from above and the shrieks\n"
-                           + "are clearly coming from a passageway to the east (r5).");
+        Room r5 = lvl0Factory.createRoom("There is a dim light from above and the shrieks\n"
+                                         + "are clearly coming from a passageway to the east (r5).");
 
         // Room 6:
-        Room r6 = new Room("The ceiling is full of bats.\n"
-                           + "You should put your hat on your head (r6).");
+        Room r6 = lvl0Factory.createRoom("The ceiling is full of bats.\n"
+                                         + "You should put your hat on your head (r6).");
 
         // Room 7:
-        Room r7 = new Room("This room is very damp. There are puddles on the floor\n" +
-                           "and a steady dripping from above (r7).");
+        Room r7 = lvl0Factory.createRoom("This room is very damp. There are puddles on the floor\n" +
+                                         "and a steady dripping from above (r7).");
 
         // Connect rooms 3, 4, 5, 6, & 7.
         r3.setSide(2, r4);
@@ -121,23 +147,23 @@ public class Adventure {
         r7.setSide(4, r4);
 
         // Room 8:
-        Room r8 = new Room("A lizard scampers past you, or is it a snake?\n" +
-                           "a narrow passage runs to the east and an evin narrower one\n" +
-                           "runs to the west (r8).");
+        Room r8 = lvl0Factory.createRoom("A lizard scampers past you, or is it a snake?\n" +
+                                         "a narrow passage runs to the east and an evin narrower one\n" +
+                                         "runs to the west (r8).");
 
         // Room 9:
-        Room r9 = new Room("Room r9.");
+        Room r9 = lvl0Factory.createRoom("Room r9.");
 
         // Room 10:
-        Room r10 = new Room("It looks like someone has been here.\n" +
-                            "There is a pile of candy wrappers on the floor,\n" +
-                            "and maybe something else. \n" +
-                            "Wait, there is a trap door on the floor,\n" +
-                            "but it is locked (r10).");
+        Room r10 = lvl0Factory.createRoom("It looks like someone has been here.\n" +
+                                          "There is a pile of candy wrappers on the floor,\n" +
+                                          "and maybe something else. \n" +
+                                          "Wait, there is a trap door on the floor,\n" +
+                                          "but it is locked (r10).");
 
         // Room 11:
-        Room r11 = new Room("This room is very dark. You can just barely see (r11).");
-        Treasure theTreasure = new Treasure("A bag filled with gold bars.");
+        Room r11 = lvl0Factory.createRoom("This room is very dark. You can just barely see (r11).");
+        Treasure theTreasure = lvl0Factory.createTreasure("A bag filled with gold bars.");
         r11.addItem(theTreasure);
 
         // Lets connect them:
@@ -149,16 +175,16 @@ public class Adventure {
         r10.setSide(3, r8);
 
         // Create a key and put it in r6:
-        Key theKey = new Key("A shiny gold key.");
+        Key theKey = lvl0Factory.createKey("A shiny gold key.");
         r6.addItem(theKey);
 
         // We add a door between r10 and r11:
-        Door theDoor = new Door(r10, r11, theKey);
+        Door theDoor = lvl0Factory.createDoor(r10, r11, theKey);
         r10.setSide(5, theDoor);
         r11.setSide(4, theDoor);
 
         // Now return the entrance:
-        entrance = outside;
+        Room entrance = outside;
         return entrance;
 
     }
