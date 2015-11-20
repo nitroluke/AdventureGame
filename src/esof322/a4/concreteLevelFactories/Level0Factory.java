@@ -1,16 +1,14 @@
-package esof322.a4.levelFactory;
+package esof322.a4.concreteLevelFactories;
 
-import esof322.a4.creationFactory;
 import esof322.a4.Door;
 import esof322.a4.Room;
 import esof322.a4.Key;
 import esof322.a4.Treasure;
-import esof322.a4.Player;
 
 /**
  * Created by lwelna on 11/19/15.
  */
-public class level0Factory implements creationFactory {
+public class Level0Factory implements esof322.a4.CreationFactory {
 
     @Override
     public Room createRoom(String desc) {
@@ -30,11 +28,6 @@ public class level0Factory implements creationFactory {
     @Override
     public Treasure createTreasure(String desc) {
         return new Treasure(desc);
-    }
-
-    @Override
-    public Player createPlayer() {
-        return new Player();
     }
 
 }
