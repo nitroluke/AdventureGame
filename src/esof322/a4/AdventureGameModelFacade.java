@@ -18,13 +18,17 @@ public class AdventureGameModelFacade {
     // its description, what I'm carrying, etc.
     //
     // These methods and fields are left as exercises.
-    /** The game from which data will be requested **/
+    /**
+     * The game from which data will be requested
+     **/
     private AdventureGame game;
     private AdventureGameView view;
     private String roomView = "";
     private String action = "";
 
-    /** The input mechanism to interface with the game **/
+    /**
+     * The input mechanism to interface with the game
+     **/
     private InputListener listener;
 
     AdventureGameModelFacade() { // we initialize
@@ -60,40 +64,45 @@ public class AdventureGameModelFacade {
         listener.send("w");
     }
 
-    public void grab(){
+    public void grab() {
         listener.send("g");
     }
-    public void drop(){
+
+    public void drop() {
         listener.send("t");
     }
-    public void takeInput(String input){
+
+    public void quit(){listener.send("q");}
+
+    public void takeInput(String input) {
         listener.send(input);
     }
+
     public void setGUI(AdventureGameView gui) {
-    	this.view = gui;
+        this.view = gui;
     }
-    
+
     public void setView(String views) {
         this.roomView = views;
         view.displayCurrentInfo();
     }
+
     // You need to finish these getView and getItems methods.
     public String getView() {
         return roomView;
     }
-    //roomView updated by the game
 
     public String getItems() {
         return game.getPlayer().showMyThings();
     }
-    public String getAction()
-    {
-    	return action;
+
+    public String getAction() {
+        return action;
     }
-    public void setAction(String a)
-    {
-    	action = a;
-    	view.displayCurrentInfo();
+
+    public void setAction(String a) {
+        action = a;
+        view.displayCurrentInfo();
     }
 
     // Surely you will need other methods to deal with

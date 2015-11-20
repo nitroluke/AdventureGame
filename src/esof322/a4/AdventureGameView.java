@@ -51,6 +51,8 @@ public class AdventureGameView extends BreezySwing.GBFrame {
     javax.swing.JButton upButton = addButton("Up", 12, 3, 1, 1);
     javax.swing.JButton downButton = addButton("Down", 14, 3, 1, 1);
 
+    javax.swing.JButton quitButton = addButton("QUIT and SAVE", 15, 5, 1, 1);
+
     javax.swing.JTextArea textInput = addTextArea("1", 15, 3, 1, 1);
     javax.swing.JButton textInputButton = addButton("Submit", 15, 4, 1, 1);
 
@@ -69,33 +71,40 @@ public class AdventureGameView extends BreezySwing.GBFrame {
     // buttonClicked method--------------------------------------
 
     public void buttonClicked(javax.swing.JButton buttonObj) {
-        if (buttonObj == upButton)
+        if (buttonObj == upButton) {
             model.goUp();
-
-        else if (buttonObj == downButton)
+        }
+        else if (buttonObj == downButton) {
             model.goDown();
-
-        else if (buttonObj == northButton)
+        }
+        else if (buttonObj == northButton) {
             model.goNorth();
-
-        else if (buttonObj == southButton)
+        }
+        else if (buttonObj == southButton) {
             model.goSouth();
-
-        else if (buttonObj == eastButton)
+        }
+        else if (buttonObj == eastButton) {
             model.goEast();
-
-        else if (buttonObj == westButton)
+        }
+        else if (buttonObj == westButton) {
             model.goWest();
-
-        else if (buttonObj == grabButton)
+        }
+        else if (buttonObj == grabButton) {
             grab();
-        else if (buttonObj == dropButton)
+        }
+        else if (buttonObj == dropButton) {
             drop();
-        else if (buttonObj == textInputButton){
+        }
+        else if (buttonObj == textInputButton) {
             model.takeInput(textInput.getText());
             textInput.replaceRange("", 0, textInput.getText().length());
         }
-    }
+        else if (buttonObj == quitButton){
+            quit();
+
+            }
+        }
+
 
     // Private methods-------------------------------------------
 
@@ -118,6 +127,10 @@ public class AdventureGameView extends BreezySwing.GBFrame {
         // Set up a dialog to talk to the model and
         // determine what items to pick up.
         model.drop();
+    }
+
+    public void quit(){
+        System.out.println(quitButton.getActionCommand());
     }
 
     public void startQuest() {
