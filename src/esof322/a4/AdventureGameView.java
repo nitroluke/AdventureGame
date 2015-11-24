@@ -100,7 +100,7 @@ public class AdventureGameView extends BreezySwing.GBFrame {
             textInput.replaceRange("", 0, textInput.getText().length());
         }
         else if (buttonObj == quitButton){
-            quit();
+            quitAndSave();
 
             }
         }
@@ -116,21 +116,17 @@ public class AdventureGameView extends BreezySwing.GBFrame {
 
     // Left as an exercise.
     private void grab() {
-        // Set up a dialog to talk to the model and
-        // determine what items to pick up.
         model.grab();
-        //carryingArea.setText(model.getItems());
     }
 
     // Left as an exercise.
     private void drop() {
-        // Set up a dialog to talk to the model and
-        // determine what items to pick up.
         model.drop();
     }
 
-    public void quit(){
+    public void quitAndSave(){
         System.out.println(quitButton.getActionCommand());
+        System.exit(0);
     }
 
     public void startQuest() {
@@ -140,7 +136,7 @@ public class AdventureGameView extends BreezySwing.GBFrame {
 
     public static void main(String[] args) {
         AdventureGameView view = new AdventureGameView();
-        view.setSize(800, 600); /* was 400, 250 */
+        view.setSize(800, 600);
         view.setVisible(true);
         view.startQuest();
     }

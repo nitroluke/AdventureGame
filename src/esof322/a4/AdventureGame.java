@@ -1,5 +1,10 @@
 package esof322.a4;
 
+import java.util.ArrayList;
+
+import esof322.a4.Deserializer;
+import esof322.a4.Serializer;
+
 /**
  * Adventure Game Program Code Copyright (c) 1999 James M. Bieman
  *
@@ -58,7 +63,6 @@ package esof322.a4;
  * off-by-one error in grab/drop that was an issue in the provided code.
  */
 public class AdventureGame {
-	int counter = 0;
     private AdventureGameModelFacade model;
 
     /** Keep track of which type of input to look for */
@@ -224,13 +228,15 @@ public class AdventureGame {
     public void startQuest() {
         thePlayer = new Player();
         Adventure theCave = new Adventure();
-        Room startRm = theCave.createAdventure();
+        ArrayList<Room> rooms = theCave.createAdventure();
+        Serializer serializer = new Serializer();
+        serializer.serialize(rooms);
+        Room startRm = rooms.get(0);
         thePlayer.setRoom(startRm);
-        char key = 'p'; //      p for prepare
+        char key = 'p';
 
         /* The main query user, get command, interpret, execute cycle. */
         while (key != 'q') {
-        	//model.setAction("hello" + counter++);
             printView(thePlayer.look() + "\n\nYou are carrying: " +
                                thePlayer.showMyThings() + '\n');
             /* get next move */

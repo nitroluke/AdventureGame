@@ -18,7 +18,7 @@ package esof322.a4;
 /*
  * Dylan Hills: drop() and go() now return strings of the item and the room respectively.
  */
-public class Player {
+public class Player implements java.io.Serializable{
 
     private Room myLoc;
 

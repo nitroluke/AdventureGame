@@ -17,7 +17,7 @@ package esof322.a4;
  * Luke Welna
  */
 
-public abstract class Item {
+public abstract class Item implements java.io.Serializable{
 
     private String desc;
 

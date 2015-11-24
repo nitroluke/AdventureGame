@@ -17,7 +17,7 @@ package esof322.a4;
  * Luke Welna
  */
 
-public class Wall implements CaveSite {
+public class Wall implements CaveSite, java.io.Serializable{
 
     public String enter(Player p)
     {

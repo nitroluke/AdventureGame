@@ -8,7 +8,7 @@ import esof322.a4.Treasure;
 /**
  * Created by lwelna on 11/19/15.
  */
-public class Level0Factory implements esof322.a4.CreationFactory {
+public class Level0Factory implements esof322.a4.CreationFactory, java.io.Serializable {
 
     @Override
     public Room createRoom(String desc) {
