@@ -2,7 +2,6 @@ package esof322.a4;
 
 import java.util.ArrayList;
 
-import esof322.a4.Deserializer;
 import esof322.a4.Serializer;
 
 /**
@@ -229,8 +228,11 @@ public class AdventureGame {
         thePlayer = new Player();
         Adventure theCave = new Adventure();
         ArrayList<Room> rooms = theCave.createAdventure();
+
         Serializer serializer = new Serializer();
-        serializer.serialize(rooms);
+        serializer.serialize(rooms, "Rooms");
+        ArrayList<Room> newRooms = (ArrayList<Room>)serializer.deserialize("Rooms");
+
         Room startRm = rooms.get(0);
         thePlayer.setRoom(startRm);
         char key = 'p';
