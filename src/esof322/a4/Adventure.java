@@ -88,6 +88,7 @@ public class Adventure {
     public ArrayList<Room> createAdventure() {
         ArrayList<Room> list = new ArrayList<>();
 
+
         // The outside:
         Level0Factory lvl0Factory = new Level0Factory();
 

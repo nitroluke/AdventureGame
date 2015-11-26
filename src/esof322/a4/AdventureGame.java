@@ -224,20 +224,28 @@ public class AdventureGame {
         return theChoice;
     }
 
-    public void startQuest() {
-        thePlayer = new Player();
-        Adventure theCave = new Adventure();
-        ArrayList<Room> rooms = theCave.createAdventure();
+    public void startQuest(boolean newGame) {
+        ArrayList<Room> rooms;
 
-        Serializer serializer = new Serializer();
-        serializer.serialize(rooms, "Rooms");
-        ArrayList<Room> newRooms = (ArrayList<Room>)serializer.deserialize("Rooms");
+        if(newGame) {
+            System.out.println("starting a new game");
+            thePlayer = new Player();
+            Adventure theCave = new Adventure();
+            rooms = theCave.createAdventure();
+            Room startRm = rooms.get(0);
+            thePlayer.setRoom(startRm);
+        } else{
+            System.out.println("loading previous game");
+            Serializer serializer = new Serializer();
+            rooms = (ArrayList<Room>)serializer.deserialize("Rooms");
+            thePlayer = (Player)serializer.deserialize("Player");
+        }
 
-        Room startRm = rooms.get(0);
-        thePlayer.setRoom(startRm);
+
         char key = 'p';
 
         /* The main query user, get command, interpret, execute cycle. */
+        System.out.println("before while");
         while (key != 'q') {
             printView(thePlayer.look() + "\n\nYou are carrying: " +
                                thePlayer.showMyThings() + '\n');
@@ -247,7 +255,7 @@ public class AdventureGame {
             if (usingKeyboard) {
                 System.out.println("Which way (n,s,e,w,u,d),\n" +
                    " or grab (g) or toss (t) an item,\n" +
-                   " or quit (q)?" + '\n');
+                   " or quit & save (q)?" + '\n');
             }
             key = receiveChar();
             direction = convertDirection(key);
@@ -281,7 +289,10 @@ public class AdventureGame {
                 }
             }
         }
-
+        Serializer serializer = new Serializer();
+        serializer.serialize(rooms, "Rooms");
+        serializer.serialize(thePlayer, "Player");
+        System.exit(0);
     }
     /**
      * Set up a game in which a messaging system will be used
@@ -306,7 +317,8 @@ public class AdventureGame {
                            + "which is inspired by an old game called the Colossal Cave Adventure.\n"
                            + "Java implementation Copyright (c) 1999 - 2012 by James M. Bieman\n");
         AdventureGame theGame = new AdventureGame();
-        theGame.startQuest();
+        // TODO implement option to load game
+        theGame.startQuest(false);
     }
 
 }

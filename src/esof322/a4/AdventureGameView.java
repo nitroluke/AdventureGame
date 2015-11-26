@@ -125,19 +125,22 @@ public class AdventureGameView extends BreezySwing.GBFrame {
     }
 
     public void quitAndSave(){
+        // the the model
         System.out.println(quitButton.getActionCommand());
-        System.exit(0);
+        model.quit();
     }
 
-    public void startQuest() {
+    public void startQuest(boolean newGame) {
     	model.setGUI(this);
-        model.startQuest();
+        model.startQuest(newGame);
     }
 
     public static void main(String[] args) {
         AdventureGameView view = new AdventureGameView();
         view.setSize(800, 600);
         view.setVisible(true);
-        view.startQuest();
+
+        // TODO implement option to load game
+        view.startQuest(false);
     }
 }
