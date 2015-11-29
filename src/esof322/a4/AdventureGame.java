@@ -1,38 +1,40 @@
 package esof322.a4;
 
 import java.util.ArrayList;
+import java.io.FileNotFoundException;
 
 import esof322.a4.Serializer;
 
+
 /**
  * Adventure Game Program Code Copyright (c) 1999 James M. Bieman
- *
+ * <p>
  * To compile: javac cs314.a2.AdventureGame.java To run: java cs314.a2.AdventureGame The main routine is AdventureGame.main
- *
+ * <p>
  * The AdventureGame is a Java implementation of the old text based adventure game from long ago. The design was adapted from one in
  * Gamma, Helm, Johnson, Vlissides (The Gang of Four), "Design Patterns: Elements of Reusable Object-Oriented Software",
  * Addison-Wesley, 1997.
- *
+ * <p>
  * To really be consistent with the old game we would need a much larger cave system with a hundred or so rooms, and a more
  * "understanding" user interface.
- *
+ * <p>
  * The old game just put you near the cave, displayed the "view" as text, and offered no instructions. If you gave a command that it
  * understood, you could proceed. If your command could not be interpreted, nothing would happen. Rooms were never identified
  * precisely; your only clues came from the descriptions. You would have to remember or create your own map of the cave system to
  * find your way around. Sometimes you could not return exactly the way you came. An exit to the east may not enter the west side of
  * the "adjacent room"; the passage might curve.
- *
+ * <p>
  * Perhaps, this implementation can evolve to be closer to the original game, or even go beyond it.
- *
+ * <p>
  * Jim Bieman September 1999.
- *
- *
+ * <p>
+ * <p>
  * /** Adventure Game Program Code Copyright (c) 1999 James M. Bieman Updated August 2010 - Code is put into package cs314.a2 to
  * match current CS314 coding standards. - Obsolete Vector is replaced with ArrayList with type parameters. - Deletion of some
  * unused variables.
- *
+ * <p>
  * To compile: javac cs314.a2.AdventureGame.java To run: java cs314.a2.AdventureGame
- *
+ * <p>
  * The main routine is AdventureGame.main
  **/
 
@@ -64,24 +66,36 @@ import esof322.a4.Serializer;
 public class AdventureGame {
     private AdventureGameModelFacade model;
 
-    /** Keep track of which type of input to look for */
+    /**
+     * Keep track of which type of input to look for
+     */
     private boolean usingKeyboard;
 
-    /** Create the keyboard to control the game; we only need one */
+    /**
+     * Create the keyboard to control the game; we only need one
+     */
     private java.io.BufferedReader keyboard;
 
-    /** Create the input to control the game; we only need one */
+    /**
+     * Create the input to control the game; we only need one
+     */
     private InputListener listener;
 
-    /** The current player **/
+    /**
+     * The current player
+     **/
     private Player thePlayer = new Player();
 
-    /** Gets the player of the game **/
-    public Player getPlayer(){
+    /**
+     * Gets the player of the game
+     **/
+    public Player getPlayer() {
         return thePlayer;
     }
+
     /**
      * Force the program to wait for user input. Gets the first character of input.
+     *
      * @return The user's input or ' ' on failure
      */
     private char receiveChar() {
@@ -97,8 +111,7 @@ public class AdventureGame {
             catch (java.io.IOException e) {
                 return ' ';
             }
-        }
-        else {
+        } else {
             try {
                 return listener.receive().toLowerCase().charAt(0);
             }
@@ -108,8 +121,10 @@ public class AdventureGame {
             }
         }
     }
+
     /**
      * Force the program to wait for user input. Gets an integer input.
+     *
      * @return The user's input or -1 on failure.
      */
     private int receiveInt() {
@@ -122,8 +137,7 @@ public class AdventureGame {
             catch (java.io.IOException e) {
                 return -1;
             }
-        }
-        else {
+        } else {
             input = listener.receive();
         }
         try {
@@ -135,30 +149,31 @@ public class AdventureGame {
         }
     }
 
-    /** Prints a message to the view slot
+    /**
+     * Prints a message to the view slot
+     *
      * @param message The message to print
      */
     private void printView(String message) {
         if (usingKeyboard) {
             System.out.println(message);
-        }
-        else {
+        } else {
             model.setView(message);
         }
     }
+
     /**
      * Prints a message to the action slot
+     *
      * @param message The message to print
      */
     private void printAction(String message) {
         if (usingKeyboard) {
             System.out.println(message);
-        }
-        else {
+        } else {
             model.setAction(message);
         }
     }
-
 
     /**
      * Our system-wide internal representation of directions is integers. Here, we convert input string directions into integers.
@@ -194,7 +209,7 @@ public class AdventureGame {
             String message = "The room has:\n";
             for (int i = 0; i < contentsArray.length; i++) {
                 message += (i + 1) + ": "
-                                   + contentsArray[i].getDesc() + "\n";
+                           + contentsArray[i].getDesc() + "\n";
             }
             message += "Enter the number of the item to grab: ";
             printView(message);
@@ -213,49 +228,73 @@ public class AdventureGame {
         int theChoice = -1;
         do {
             String message = "You are carrying: " +
-                               p.showMyThings() + '\n';
+                             p.showMyThings() + '\n';
             message += "Enter the number of the item to drop: ";
             printView(message);
             theChoice = receiveInt();
             if (theChoice <= 0 || theChoice > p.numItemsCarried())
                 printView("Invalid choice.");
+            else if(p.numItemsCarried() == 0){
+                printView("You have no items to drop.");
+            }
         } while (theChoice <= 0 || theChoice > p.numItemsCarried());
 
         return theChoice;
     }
 
-    public void startQuest(boolean newGame) {
+    public ArrayList<Room> loadGame(){
         ArrayList<Room> rooms;
+        String message  = "Would you like to load a previous game? (y/n)\n";
 
-        if(newGame) {
-            System.out.println("starting a new game");
-            thePlayer = new Player();
-            Adventure theCave = new Adventure();
-            rooms = theCave.createAdventure();
-            Room startRm = rooms.get(0);
-            thePlayer.setRoom(startRm);
-        } else{
-            System.out.println("loading previous game");
-            Serializer serializer = new Serializer();
-            rooms = (ArrayList<Room>)serializer.deserialize("Rooms");
-            thePlayer = (Player)serializer.deserialize("Player");
-        }
+        do {
+            printView(message);
+            char loadGame = receiveChar();
 
+            if (loadGame == 'y') {
+                try{
+                    printView("trying to load a previous game.");
+                    Serializer serializer = new Serializer();
+                    rooms = (ArrayList<Room>)serializer.deserialize("Rooms");
+                    thePlayer = (Player)serializer.deserialize("Player");
+                    printView("Load successful...");
+                    break;
+                } catch (FileNotFoundException fnf){
+                    message += "There are no previous saves\n";
+                }
 
+            }
+
+            if (loadGame == 'n') {
+                printView("starting a new game!");
+                thePlayer = new Player();
+                Adventure theCave = new Adventure();
+                rooms = theCave.createAdventure();
+                Room startRm = rooms.get(0);
+                thePlayer.setRoom(startRm);
+                break;
+            } else {
+                message += "That is not a valid option \n";
+            }
+        } while(true);
+
+        return rooms;
+    }
+    public void startQuest() {
+
+        ArrayList rooms = loadGame();
         char key = 'p';
 
         /* The main query user, get command, interpret, execute cycle. */
-        System.out.println("before while");
         while (key != 'q') {
             printView(thePlayer.look() + "\n\nYou are carrying: " +
-                               thePlayer.showMyThings() + '\n');
+                      thePlayer.showMyThings() + '\n');
             /* get next move */
             int direction = -1;
             //  We only care about this in keyboard mode
             if (usingKeyboard) {
                 System.out.println("Which way (n,s,e,w,u,d),\n" +
-                   " or grab (g) or toss (t) an item,\n" +
-                   " or quit & save (q)?" + '\n');
+                                   " or grab (g) or toss (t) an item,\n" +
+                                   " or quit & save (q)?" + '\n');
             }
             key = receiveChar();
             direction = convertDirection(key);
@@ -266,13 +305,11 @@ public class AdventureGame {
             else if (key == 'g') {
                 if (thePlayer.handsFull()) {
                     printAction("Your hands are full.");
-                }
-                else if ((thePlayer.getLoc()).roomEmpty()) {
+                } else if ((thePlayer.getLoc()).roomEmpty()) {
                     printAction("The room is empty.");
-                }
-                else {
+                } else {
                     Item itemToGrab =
-                        choosePickupItem(thePlayer);
+                                    choosePickupItem(thePlayer);
                     thePlayer.pickUp(itemToGrab);
                     (thePlayer.getLoc()).removeItem(itemToGrab);
                     printAction("Grabbed the item " + itemToGrab.getDesc());
@@ -282,10 +319,9 @@ public class AdventureGame {
             else if (key == 't') {
                 if (thePlayer.handsEmpty()) {
                     printAction("You have nothing to drop.");
-                }
-                else {
+                } else {
                     int itemToToss = chooseDropItem(thePlayer);
-                    printAction("Dropped "+thePlayer.drop(itemToToss));
+                    printAction("Dropped " + thePlayer.drop(itemToToss));
                 }
             }
         }
@@ -294,8 +330,10 @@ public class AdventureGame {
         serializer.serialize(thePlayer, "Player");
         System.exit(0);
     }
+
     /**
      * Set up a game in which a messaging system will be used
+     *
      * @param listener The listener to act as the interface
      */
     public AdventureGame(AdventureGameModelFacade model, InputListener listener) {
@@ -303,6 +341,7 @@ public class AdventureGame {
         this.listener = listener;
         usingKeyboard = false;
     }
+
     /**
      * Setup a game in which the keyboard will be used
      */
@@ -312,13 +351,13 @@ public class AdventureGame {
     }
 
     public static void main(String args[])
-        throws java.io.IOException {
+                    throws java.io.IOException {
         System.out.println("Welcome to the Adventure Game,\n"
                            + "which is inspired by an old game called the Colossal Cave Adventure.\n"
                            + "Java implementation Copyright (c) 1999 - 2012 by James M. Bieman\n");
         AdventureGame theGame = new AdventureGame();
-        // TODO implement option to load game
-        theGame.startQuest(false);
+
+        theGame.startQuest();
     }
 
 }

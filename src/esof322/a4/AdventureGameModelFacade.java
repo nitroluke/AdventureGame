@@ -36,8 +36,9 @@ public class AdventureGameModelFacade {
         this.game = new AdventureGame(this, listener);
     }
 
-    public void startQuest(boolean newGame) {
-        game.startQuest(newGame);
+    //TODO implement newgame?
+    public void startQuest() {
+        game.startQuest();
     }
 
     public void goUp() {

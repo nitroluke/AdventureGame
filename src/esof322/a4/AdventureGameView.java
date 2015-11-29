@@ -130,9 +130,9 @@ public class AdventureGameView extends BreezySwing.GBFrame {
         model.quit();
     }
 
-    public void startQuest(boolean newGame) {
+    public void startQuest() {
     	model.setGUI(this);
-        model.startQuest(newGame);
+        model.startQuest();
     }
 
     public static void main(String[] args) {
@@ -141,6 +141,6 @@ public class AdventureGameView extends BreezySwing.GBFrame {
         view.setVisible(true);
 
         // TODO implement option to load game
-        view.startQuest(false);
+        view.startQuest();
     }
 }
