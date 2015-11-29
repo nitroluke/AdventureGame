@@ -19,7 +19,7 @@ package esof322.a4;
 
 public class Key extends Item {
 
-    public Key(String desc){
+    public Key(String desc) {
         super(desc);
     }
 }

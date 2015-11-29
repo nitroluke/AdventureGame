@@ -7,6 +7,7 @@ package esof322.a4;
  * Luke O'Neill
  * Luke Welna
  */
+
 /**
  * Todd Beckman:
  * Input Listener
@@ -18,34 +19,39 @@ public class InputListener {
      * The message that is being sent
      */
     private String message;
+
     /**
      * Constructs a listener. Only one should be needed unless parallel input is expected.
      */
-    InputListener() {}
+    InputListener() {
+    }
+
     /**
      * Receive a string of input.
-     * @param listener The object that is to be synchronized in waiting
+     *
      * @return The message that is finally received.
      */
     public String receive() {
-        synchronized(listenObject) {
+        synchronized (listenObject) {
             try {
                 message = null;
                 while (message == null) {
                     listenObject.wait();
                 }
+            } catch (InterruptedException e) {
             }
-            catch (InterruptedException e) {}
         }
         return message;
     }
+
     /**
      * Send a message to the listener, if it is listening.
+     *
      * @param message The message to send
      */
     public void send(String message) {
         //  Alert the listener it is ready
-        synchronized(listenObject) {
+        synchronized (listenObject) {
             this.message = message;
             listenObject.notifyAll();
         }

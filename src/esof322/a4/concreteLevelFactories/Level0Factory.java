@@ -12,21 +12,25 @@ public class Level0Factory implements esof322.a4.CreationFactory, java.io.Serial
 
     @Override
     public Room createRoom(String desc) {
+
         return new Room(desc);
     }
 
     @Override
     public Door createDoor(Room from, Room into, Key key) {
+
         return new Door(from, into, key);
     }
 
     @Override
     public Key createKey(String desc) {
+
         return new Key(desc);
     }
 
     @Override
     public Treasure createTreasure(String desc) {
+
         return new Treasure(desc);
     }
 

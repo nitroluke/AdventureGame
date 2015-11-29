@@ -37,7 +37,7 @@ public class AdventureGameModelFacade {
     }
 
     //TODO implement newgame?
-    public void startQuest() {
+    public void startQuest(l) {
         game.startQuest();
     }
 

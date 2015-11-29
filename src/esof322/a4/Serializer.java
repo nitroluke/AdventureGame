@@ -16,11 +16,14 @@ public class Serializer {
 
     public File serialize(Object o, String fileName) {
         try {
-            System.out.println("trying to create file:\n Team_11" + File.separator + "saveData" + File.separator + fileName + ".ser\n");
+            System.out.println(
+                            "trying to create file:\n Team_11" + File.separator + "saveData" + File.separator + fileName + ".ser\n");
             File f = new File("Team_11" + File.separator + "saveData" + File.separator + fileName + ".ser");
             System.out.println("actually wrote to \n" + f.getAbsoluteFile());
 
-            FileOutputStream fileOut = new FileOutputStream("Team_11" + File.separator +"saveData" + File.separator + fileName + ".ser");
+            FileOutputStream
+                            fileOut =
+                            new FileOutputStream("Team_11" + File.separator + "saveData" + File.separator + fileName + ".ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(o);
             out.close();
@@ -33,7 +36,7 @@ public class Serializer {
         }
     }
 
-    public Object deserialize(String fileName) throws FileNotFoundException{
+    public Object deserialize(String fileName) throws FileNotFoundException {
         try {
             FileInputStream fileIn = new FileInputStream("Team_11" + File.separator + "saveData" + File.separator + fileName + ".ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -41,11 +44,11 @@ public class Serializer {
             in.close();
             fileIn.close();
             return o;
-        }  catch (ClassNotFoundException c) {
+        } catch (ClassNotFoundException c) {
             System.out.println("class not found");
             c.printStackTrace();
             return null;
-        } catch (FileNotFoundException fnf){
+        } catch (FileNotFoundException fnf) {
             throw fnf;
         } catch (IOException i) {
             i.printStackTrace();

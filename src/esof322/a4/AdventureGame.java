@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 
 import esof322.a4.Serializer;
 
-
 /**
  * Adventure Game Program Code Copyright (c) 1999 James M. Bieman
  * <p>
@@ -234,7 +233,7 @@ public class AdventureGame {
             theChoice = receiveInt();
             if (theChoice <= 0 || theChoice > p.numItemsCarried())
                 printView("Invalid choice.");
-            else if(p.numItemsCarried() == 0){
+            else if (p.numItemsCarried() == 0) {
                 printView("You have no items to drop.");
             }
         } while (theChoice <= 0 || theChoice > p.numItemsCarried());
@@ -242,23 +241,23 @@ public class AdventureGame {
         return theChoice;
     }
 
-    public ArrayList<Room> loadGame(){
+    public ArrayList<Room> loadGame() {
         ArrayList<Room> rooms;
-        String message  = "Would you like to load a previous game? (y/n)\n";
+        String message = "Would you like to load a previous game? (y/n)\n";
 
         do {
             printView(message);
             char loadGame = receiveChar();
 
             if (loadGame == 'y') {
-                try{
+                try {
                     printView("trying to load a previous game.");
                     Serializer serializer = new Serializer();
                     rooms = (ArrayList<Room>)serializer.deserialize("Rooms");
                     thePlayer = (Player)serializer.deserialize("Player");
                     printView("Load successful...");
                     break;
-                } catch (FileNotFoundException fnf){
+                } catch (FileNotFoundException fnf) {
                     message += "There are no previous saves\n";
                 }
 
@@ -275,10 +274,11 @@ public class AdventureGame {
             } else {
                 message += "That is not a valid option \n";
             }
-        } while(true);
+        } while (true);
 
         return rooms;
     }
+
     public void startQuest() {
 
         ArrayList rooms = loadGame();

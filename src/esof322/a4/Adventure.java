@@ -1,6 +1,7 @@
 package esof322.a4;
 
 import esof322.a4.concreteLevelFactories.Level0Factory;
+
 import java.util.ArrayList;
 /*
  * Todd Beckman
@@ -13,6 +14,19 @@ import java.util.ArrayList;
  * Adventure Game Program Code Copyright (c) 1999 James M. Bieman
  * <p>
  * To compile: javac AdventureGame.java To run: java AdventureGame
+ * <p>
+ * The main routine is AdventureGame.main
+ * <p>
+ * Adventure Game Program Code Copyright (c) 1999-2012 James M. Bieman The Adventure game is based on the "Colossal Cave Adventure"
+ * originally designed by Will Crowther and implemented by Will Crowther and Don Wood in Fortran in 1975 and 1976.
+ * <p>
+ * This micro-version is a variant of the original cave system and is implemented in Java with just a few rooms and with a much more
+ * limited vocabulary.
+ * <p>
+ * Updated August 2010, January 2012 - Code is put into package cs314.a2 to match current CS314 coding standards. Updated January
+ * 2012 - Renamed as the "Adventure Game"
+ * <p>
+ * To compile: javac cs314.a2.AdventureGame.java To run: java cs314.a2.AdventureGame
  * <p>
  * The main routine is AdventureGame.main
  * <p>
@@ -87,7 +101,6 @@ public class Adventure {
 
     public ArrayList<Room> createAdventure() {
         ArrayList<Room> list = new ArrayList<>();
-
 
         // The outside:
         Level0Factory lvl0Factory = new Level0Factory();

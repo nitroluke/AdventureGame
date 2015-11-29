@@ -124,7 +124,7 @@ public class AdventureGameView extends BreezySwing.GBFrame {
         model.drop();
     }
 
-    public void quitAndSave(){
+    public void quitAndSave() {
         // the the model
         System.out.println(quitButton.getActionCommand());
         model.quit();

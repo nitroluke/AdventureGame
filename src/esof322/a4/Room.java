@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * Luke Welna
  */
 
-public class Room implements CaveSite, java.io.Serializable{
+public class Room implements CaveSite, java.io.Serializable {
     protected String desc;
     protected CaveSite[] side = new CaveSite[6];
     protected ArrayList<Item> contents = new ArrayList<Item>();
