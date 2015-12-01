@@ -61,6 +61,8 @@ public class Door implements CaveSite, java.io.Serializable {
             } else {
                 if (p.haveItem(myKey)){
                     outputString = "You have the correct key, but the door \n is rusted shut.\n";
+                } else {
+                    outputString += "You don't have the key for that door\n";
                 }
             }
         }
