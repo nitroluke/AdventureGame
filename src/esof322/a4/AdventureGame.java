@@ -3,7 +3,7 @@ package esof322.a4;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
 
-import esof322.a4.Serializer;
+import esof322.a4.concreteLevelProducts.*;
 
 /**
  * Adventure Game Program Code Copyright (c) 1999 James M. Bieman
@@ -241,35 +241,69 @@ public class AdventureGame {
         return theChoice;
     }
 
-    public ArrayList<Room> loadGame() {
+    private ArrayList<Room> loadNewGame() {
+        ArrayList<Room> lvlLayout = null;
+        int lvl;
+        String lvlMessage = "What level would you like to play? (0,1) \n";
+
+        do {
+            printView(lvlMessage);
+            lvl = receiveInt();
+            // prevent unnecessary memory allocation for invalid inputs.
+            if (lvl == 0 || lvl == 1) {
+                thePlayer = new Player();
+
+                if (lvl == 0) {
+                    Lvl0Adventure lvl0Cave = new Lvl0Adventure();
+                    lvlLayout = lvl0Cave.createAdventure();
+                } else {
+                    Lvl1Adventure lvl1Cave = new Lvl1Adventure();
+                    lvlLayout = lvl1Cave.createAdventure();
+                }
+            } else {
+                lvlMessage += "That is an invalid option. Please choose a valid level. \n";
+                lvl = -1;
+            }
+
+        } while (lvl == -1);
+
+        //lvlLayout = theCave.createAdventure();
+        Room startRm = lvlLayout.get(0);
+        thePlayer.setRoom(startRm);
+        return lvlLayout;
+    }
+
+    private ArrayList<Room> loadSaveGame() throws FileNotFoundException {
+        Serializer serializer = new Serializer();
+        ArrayList<Room> lvlLayout;
+        try {
+
+            lvlLayout = (ArrayList<Room>)serializer.deserialize("Rooms");
+            thePlayer = (Player)serializer.deserialize("Player");
+            return lvlLayout;
+        } catch (FileNotFoundException fnf) {
+            throw fnf;
+        }
+    }
+
+    private ArrayList<Room> setupGame() {
         ArrayList<Room> rooms;
         String message = "Would you like to load a previous game? (y/n)\n";
-
         do {
             printView(message);
             char loadGame = receiveChar();
 
             if (loadGame == 'y') {
                 try {
-                    printView("trying to load a previous game.");
-                    Serializer serializer = new Serializer();
-                    rooms = (ArrayList<Room>)serializer.deserialize("Rooms");
-                    thePlayer = (Player)serializer.deserialize("Player");
-                    printView("Load successful...");
+                    rooms = loadSaveGame();
                     break;
-                } catch (FileNotFoundException fnf) {
+                } catch (FileNotFoundException e) {
                     message += "There are no previous saves\n";
                 }
-
             }
 
             if (loadGame == 'n') {
-                printView("starting a new game!");
-                thePlayer = new Player();
-                Adventure theCave = new Adventure();
-                rooms = theCave.createAdventure();
-                Room startRm = rooms.get(0);
-                thePlayer.setRoom(startRm);
+                rooms = loadNewGame();
                 break;
             } else {
                 message += "That is not a valid option \n";
@@ -281,7 +315,8 @@ public class AdventureGame {
 
     public void startQuest() {
 
-        ArrayList rooms = loadGame();
+        ArrayList rooms = setupGame();
+
         char key = 'p';
 
         /* The main query user, get command, interpret, execute cycle. */

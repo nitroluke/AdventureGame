@@ -16,10 +16,10 @@ public class Serializer {
 
     public File serialize(Object o, String fileName) {
         try {
-            System.out.println(
-                            "trying to create file:\n Team_11" + File.separator + "saveData" + File.separator + fileName + ".ser\n");
+//            System.out.println(
+//                            "trying to create file:\n Team_11" + File.separator + "saveData" + File.separator + fileName + ".ser\n");
             File f = new File("Team_11" + File.separator + "saveData" + File.separator + fileName + ".ser");
-            System.out.println("actually wrote to \n" + f.getAbsoluteFile());
+//            System.out.println("actually wrote to \n" + f.getAbsoluteFile());
 
             FileOutputStream
                             fileOut =
@@ -45,7 +45,7 @@ public class Serializer {
             fileIn.close();
             return o;
         } catch (ClassNotFoundException c) {
-            System.out.println("class not found");
+//            System.out.println("class not found");
             c.printStackTrace();
             return null;
         } catch (FileNotFoundException fnf) {
